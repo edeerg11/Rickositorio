@@ -1,0 +1,117 @@
+[
+  {
+    "id": 2,
+    "name": "Morty Smith",
+    "status": "Alive",
+    "species": "Human",
+    "type": "",
+    "gender": "Male",
+    "origin": {
+      "name": "Earth",
+      "url": ""
+    },
+    "location": {
+      "name": "Earth",
+      "url": ""
+    },
+    "image": "",
+    "episode": [
+      "",
+      ""
+    ],
+    "url": "",
+    "created": "2017-11-04T18:50:21.651Z"
+  },
+  {
+    "id": 3,
+    "name": "Summer Smith",
+    "status": "Dead",
+    "species": "Human",
+    "type": "",
+    "gender": "Female",
+    "origin": {
+      "name": "Earth",
+      "url": ""
+    },
+    "location": {
+      "name": "Earth",
+      "url": ""
+    },
+    "image": "",
+    "episode": [
+      "",
+      ""
+    ],
+    "url": "",
+    "created": "2017-11-05T09:06:48.200Z"
+  },
+  {
+    "id": 4,
+    "name": "Beth Smith",
+    "status": "Alive",
+    "species": "Human",
+    "type": "",
+    "gender": "Female",
+    "origin": {
+      "name": "Earth",
+      "url": ""
+    },
+    "location": {
+      "name": "Earth",
+      "url": ""
+    },
+    "image": "",
+    "episode": [
+      "",
+      ""
+    ],
+    "url": "",
+    "created": "2017-11-05T09:10:22.421Z"
+  },
+  {
+    "id": 5,
+    "name": "Jerry Smith",
+    "status": "Alive",
+    "species": "Human",
+    "type": "",
+    "gender": "Male",
+    "origin": {
+      "name": "Earth",
+      "url": ""
+    },
+    "location": {
+      "name": "Earth",
+      "url": ""
+    },
+    "image": "",
+    "episode": [
+      "",
+      ""
+    ],
+    "url": "",
+    "created": "2017-11-04T18:48:46.250Z"
+  },
+  {
+    "id": 6,
+    "name": "Abadango Cluster Princess",
+    "status": "Alive",
+    "species": "Alien",
+    "type": "",
+    "gender": "Female",
+    "origin": {
+      "name": "Abadango",
+      "url": ""
+    },
+    "location": {
+      "name": "Abadango",
+      "url": ""
+    },
+    "image": "",
+    "episode": [
+      "",
+      ""
+    ],
+    "url": "",
+    "created": "2017-11-04T19:50:28.250Z"
+  }
+]
