@@ -1,5 +1,5 @@
 import charactersData from "../data.json" with {type: "json"};
-import { Personaje } from "../clases/Persona.js";
+import { Personaje } from "../clases/Personaje.js";
 import { Lugar } from "../clases/Lugar.js";
 import { Episodio } from "../clases/Episodio.js";
 
