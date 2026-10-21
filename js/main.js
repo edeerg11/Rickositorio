@@ -14,6 +14,16 @@ export function getPersonajes() {
     return personajes;
 }
 
+
+export function getPersonaje(url) {
+   try {
+    console.log(url);
+    
+   } catch (error) {
+    
+   }
+}
+
 export function getLugares() {
     const lugaresData = [];
     if (!lugaresData|| lugaresData.length===0) {
