@@ -7,7 +7,7 @@
 }
 
 .tarjeta {
-    background-color: grey;
+    background-color: rgb(180, 180, 180);
     width: 400px;
     height: 300px;
     flex-shrink: 0;

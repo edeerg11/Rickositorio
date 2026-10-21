@@ -1,17 +1,46 @@
 import { getPersonajes } from "./main.js";
 
 export function mostrarPersonajes() {
-    const lista = document.getElementById("listaPersonajes");
+    const lista = document.getElementById("listaTarjetas");
     const personajes = getPersonajes();
 
     personajes.forEach(pj => {
         console.log(pj);
+
         const div = document.createElement("div");
-        const elemento = document.createElement("li");
+        div.classList.add("tarjeta");
+        lista.appendChild(div);
 
-        elemento.textContent = `${pj.name}`;
+        const img = document.createElement("img");
+        img.src = pj.image;
+        div.appendChild(img);
 
-        lista.appendChild(elemento);
+        const p = document.createElement("p");
+        p.textContent = `${pj.name}`;
+        div.appendChild(p);
+
+        const ul = document.createElement("ul");
+        div.appendChild(ul);
+
+        const liEstado = document.createElement("li");
+        liEstado.textContent = pj.status;
+        ul.appendChild(liEstado);
+
+        const liEspecie = document.createElement("li");
+        liEspecie.textContent = pj.species;
+        ul.appendChild(liEspecie);
+
+        const liOrigen = document.createElement("li");
+        liOrigen.textContent = pj.origin.name;
+        ul.appendChild(liOrigen);
+
+        const buttonFavoritos = document.createElement("button");
+        buttonFavoritos.textContent = `Favorito`;
+        div.appendChild(buttonFavoritos);
+        
+        const buttonVerMas = document.createElement("button");
+        buttonVerMas.textContent = `Ver más`;
+        div.appendChild(buttonVerMas);
 
     });
 
