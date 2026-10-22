@@ -17,3 +17,8 @@
 .tarjeta p{
     font-weight: bold;
 }
+
+.tarjeta img{
+    width: 100px;
+    height: 100px;
+}

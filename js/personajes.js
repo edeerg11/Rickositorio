@@ -1,11 +1,28 @@
 import { getPersonajes } from "./main.js";
 
-export function mostrarPersonajes() {
-    const lista = document.getElementById("listaTarjetas");
-    const personajes = getPersonajes();
+let pagina = 1;
+let listaPersonajes = [];
+let maxPaginas;
 
-    personajes.forEach(pj => {
-        console.log(pj);
+async function mostrarPersonajes(number) {
+    listaPersonajes = await getPersonajes(number);
+    
+    console.log(listaPersonajes);
+
+    maxPaginas = listaPersonajes.info.pages;
+    console.log(maxPaginas);
+    
+
+    montarLista(listaPersonajes.personajes);
+}
+
+function montarLista(listaPersonajes) {
+
+    const lista = document.getElementById("listaTarjetas");
+
+    lista.innerHTML = "";
+
+    listaPersonajes.forEach(pj => {
 
         const div = document.createElement("div");
         div.classList.add("tarjeta");
@@ -37,7 +54,7 @@ export function mostrarPersonajes() {
         const buttonFavoritos = document.createElement("button");
         buttonFavoritos.textContent = `Favorito`;
         div.appendChild(buttonFavoritos);
-        
+
         const buttonVerMas = document.createElement("button");
         buttonVerMas.textContent = `Ver más`;
         div.appendChild(buttonVerMas);
@@ -46,12 +63,20 @@ export function mostrarPersonajes() {
 
 }
 
-function alertAdelante(){
-    alert("Has pulsado el boton hacia adelante");
+async function alertAdelante() {
+    if(pagina < maxPaginas){
+        pagina += 1;
+        listaPersonajes = await getPersonajes(pagina);
+        montarLista(listaPersonajes.personajes);
+    }
 }
 
-function alertAtras(){
-    alert("Has pulsado el boton hacia atras");
+async function alertAtras() {
+    if(pagina > 1){
+        pagina -= 1;
+        listaPersonajes = await getPersonajes(pagina);
+        montarLista(listaPersonajes.personajes);
+    }
 }
 
 const buttonAdelante = document.getElementById("buttonAdelante");
@@ -60,4 +85,4 @@ buttonAdelante.addEventListener("click", alertAdelante);
 const buttonAtras = document.getElementById("buttonAtras");
 buttonAtras.addEventListener("click", alertAtras);
 
-mostrarPersonajes();
+await mostrarPersonajes();
