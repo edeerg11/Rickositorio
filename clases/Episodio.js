@@ -1,6 +1,6 @@
 export class Episodio {
     constructor(data) {
-        this.id = data.is;
+        this.id = data.id;
         this.name = data.name;
         this.estreno = data.air_date;
         this.temporada = data.episode.slice(1,3);

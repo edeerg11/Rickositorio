@@ -1,6 +1,6 @@
 export class Lugar {
     constructor(data) {
-        this.id = data.is;
+        this.id = data.id;
         this.name = data.name;
         this.type = data.type;
         this.dimension = data.dimension;
