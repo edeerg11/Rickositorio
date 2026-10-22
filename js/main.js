@@ -31,6 +31,61 @@ export async function getPersonajes(numberPage = 1) {
     };
 }
 
+
+export async function getEpisodios(numberPage = 1) {
+    const API_URL = "https://rickandmortyapi.com/api/episode";
+
+    const url = numberPage === 1 ?
+        API_URL
+        : `${API_URL}?page=${numberPage}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error('Error al obtener los datos del episodio');
+    }
+    const data = await response.json();
+
+    if (!data.results || data.results.length === 0) {
+        throw new Error("No hay datos")
+    }
+    const episodios = data.results.map(p =>
+        new Episodio(p)
+    )
+
+    return {
+        episodios,
+        info: data.info
+    };
+}
+
+export async function getLugares() {
+    const API_URL = "https://rickandmortyapi.com/api/location";
+
+    const url = numberPage === 1 ?
+        API_URL
+        : `${API_URL}?page=${numberPage}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error('Error al obtener los datos del lugar');
+    }
+    const data = await response.json();
+
+    if (!data.results || data.results.length === 0) {
+        throw new Error("No hay datos")
+    }
+    const episodios = data.results.map(p =>
+        new Lugar(p)
+    )
+
+    return {
+        episodios,
+        info: data.info
+    };
+}
+
 /**
  * 
  * @param {number} id id del personaje
@@ -52,16 +107,7 @@ export function getPersonaje(id) {
     }
 }
 
-export function getLugares() {
-    const lugaresData = [];
-    if (!lugaresData || lugaresData.length === 0) {
-        throw new Error("No hay datos")
-    }
-    const lugares = lugaresData.map(lugar =>
-        new Lugar(lugar)
-    );
-    return lugares;
-}
+
 
 /**
  * 
@@ -84,16 +130,8 @@ export function getLugar(id) {
     }
 }
 
-export function getEpisodios() {
-    const episodiosData = EpisodesData;
-    if (!episodiosData || episodiosData.length === 0) {
-        throw new Error("No hay datos")
-    }
-    const episodios = episodiosData.map(episodio =>
-        new Episodio(episodio)
-    );
-    return episodios;
-}
+
+
 
 /**
  * 
