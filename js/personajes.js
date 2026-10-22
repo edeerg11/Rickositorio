@@ -46,4 +46,18 @@ export function mostrarPersonajes() {
 
 }
 
+function alertAdelante(){
+    alert("Has pulsado el boton hacia adelante");
+}
+
+function alertAtras(){
+    alert("Has pulsado el boton hacia atras");
+}
+
+const buttonAdelante = document.getElementById("buttonAdelante");
+buttonAdelante.addEventListener("click", alertAdelante);
+
+const buttonAtras = document.getElementById("buttonAtras");
+buttonAtras.addEventListener("click", alertAtras);
+
 mostrarPersonajes();

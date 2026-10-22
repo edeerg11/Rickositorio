@@ -11,4 +11,9 @@
     width: 400px;
     height: 300px;
     flex-shrink: 0;
+    justify-content: center;
+}
+
+.tarjeta p{
+    font-weight: bold;
 }
