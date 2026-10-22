@@ -1,4 +1,3 @@
-
 .listaTarjetas {
     display: flex;
     flex-wrap: wrap;
@@ -11,14 +10,43 @@
     width: 400px;
     height: 300px;
     flex-shrink: 0;
-    justify-content: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 15px;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.tarjeta p{
-    font-weight: bold;
-}
-
-.tarjeta img{
+/* Imagen centrada */
+.tarjeta img {
     width: 100px;
     height: 100px;
+    object-fit: cover;
+}
+
+/* Nombre */
+.nombre {
+    margin: 5px 0;
+}
+
+/* Lista a la izquierda y favoritos a la derecha */
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.info ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Botón de saber más abajo a la derecha */
+.saberMas {
+    align-self:flex-end;
+    margin-top: auto;
 }

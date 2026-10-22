@@ -6,12 +6,11 @@ let maxPaginas;
 
 async function mostrarPersonajes(number) {
     listaPersonajes = await getPersonajes(number);
-    
+
     console.log(listaPersonajes);
 
     maxPaginas = listaPersonajes.info.pages;
     console.log(maxPaginas);
-    
 
     montarLista(listaPersonajes.personajes);
 }
@@ -24,20 +23,24 @@ function montarLista(listaPersonajes) {
 
     listaPersonajes.forEach(pj => {
 
-        const div = document.createElement("div");
-        div.classList.add("tarjeta");
-        lista.appendChild(div);
+        const divTarjeta = document.createElement("div");
+        divTarjeta.classList.add("tarjeta");
+        lista.appendChild(divTarjeta);
 
         const img = document.createElement("img");
         img.src = pj.image;
-        div.appendChild(img);
+        divTarjeta.appendChild(img);
 
         const p = document.createElement("p");
         p.textContent = `${pj.name}`;
-        div.appendChild(p);
+        divTarjeta.appendChild(p);
+
+        const divInfo = document.createElement("div");
+        divInfo.classList.add("info");
+        divTarjeta.appendChild(divInfo);
 
         const ul = document.createElement("ul");
-        div.appendChild(ul);
+        divInfo.appendChild(ul);
 
         const liEstado = document.createElement("li");
         liEstado.textContent = pj.status;
@@ -53,26 +56,38 @@ function montarLista(listaPersonajes) {
 
         const buttonFavoritos = document.createElement("button");
         buttonFavoritos.textContent = `Favorito`;
-        div.appendChild(buttonFavoritos);
+        buttonFavoritos.addEventListener("click", function () {
+            localStorage.setItem("IdPersonajeFavorito", pj.id);
+        });
+        divTarjeta.appendChild(buttonFavoritos);
 
         const buttonVerMas = document.createElement("button");
-        buttonVerMas.textContent = `Ver más`;
-        div.appendChild(buttonVerMas);
+        buttonVerMas.id = 'buttonVerMas';
+        // buttonVerMas.textContent = `Ver más`;
+        buttonVerMas.addEventListener("click", function () {
+            localStorage.setItem("IdPersonaje", pj.id);
+        });
+        divTarjeta.appendChild(buttonVerMas);
+
+        const linkVerMas = document.createElement("a");
+        linkVerMas.href = "vistaIndividual.html";
+        linkVerMas.textContent = "Ver más";
+        buttonVerMas.appendChild(linkVerMas);
 
     });
 
 }
 
-async function alertAdelante() {
-    if(pagina < maxPaginas){
+async function avanzarPagina() {
+    if (pagina < maxPaginas) {
         pagina += 1;
         listaPersonajes = await getPersonajes(pagina);
         montarLista(listaPersonajes.personajes);
     }
 }
 
-async function alertAtras() {
-    if(pagina > 1){
+async function retrocederPagina() {
+    if (pagina > 1) {
         pagina -= 1;
         listaPersonajes = await getPersonajes(pagina);
         montarLista(listaPersonajes.personajes);
@@ -80,9 +95,9 @@ async function alertAtras() {
 }
 
 const buttonAdelante = document.getElementById("buttonAdelante");
-buttonAdelante.addEventListener("click", alertAdelante);
+buttonAdelante.addEventListener("click", avanzarPagina);
 
 const buttonAtras = document.getElementById("buttonAtras");
-buttonAtras.addEventListener("click", alertAtras);
+buttonAtras.addEventListener("click", retrocederPagina);
 
 await mostrarPersonajes();
