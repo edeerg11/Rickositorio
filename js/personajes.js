@@ -57,7 +57,9 @@ function montarLista(listaPersonajes) {
         const buttonFavoritos = document.createElement("button");
         buttonFavoritos.textContent = `Favorito`;
         buttonFavoritos.addEventListener("click", function () {
-            localStorage.setItem("IdPersonajeFavorito", pj.id);
+            const favoritos = JSON.parse(localStorage.getItem("PersonajesFavorito")) || [];
+            favoritos.push(pj);
+            localStorage.setItem("PersonajesFavorito", JSON.stringify(favoritos));
         });
         divTarjeta.appendChild(buttonFavoritos);
 
