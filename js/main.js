@@ -4,30 +4,46 @@ import { Personaje } from "../clases/Personaje.js";
 import { Lugar } from "../clases/Lugar.js";
 import { Episodio } from "../clases/Episodio.js";
 
-export function getPersonajes() {
-    if (!charactersData || charactersData.length === 0) {
+export async function getPersonajes(numberPage = 1) {
+    const API_URL = "https://rickandmortyapi.com/api/character";
+
+    const url = numberPage === 1 ?
+        API_URL
+        : `${API_URL}/?page=${numberPage}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error('Error al obtener los datos del personaje');
+    }
+    const data = await response.json();
+
+    if (!data.results || data.results.length === 0) {
         throw new Error("No hay datos")
     }
-    const personajes = charactersData.map(p =>
+    const personajes = data.results.map(p =>
         new Personaje(p)
     )
 
-    return personajes;
+    return {
+        personajes,
+        info: data.info
+    };
 }
 
- /**
-  * 
-  * @param {number} id id del personaje
-  * @returns info del personaje individual 
-  */
+/**
+ * 
+ * @param {number} id id del personaje
+ * @returns info del personaje individual 
+ */
 export function getPersonaje(id) {
     try {
         //const response = await fetch(url);
-        const response=[];
+        const response = [];
         if (!response.ok) {
             throw new Error("Error al obtener el personaje");
         }
-        const datos =  response.json();
+        const datos = response.json();
 
         return new Personaje(datos);
     } catch (error) {
@@ -38,28 +54,28 @@ export function getPersonaje(id) {
 
 export function getLugares() {
     const lugaresData = [];
-    if (!lugaresData|| lugaresData.length===0) {
+    if (!lugaresData || lugaresData.length === 0) {
         throw new Error("No hay datos")
     }
     const lugares = lugaresData.map(lugar =>
         new Lugar(lugar)
     );
     return lugares;
- }
+}
 
- /**
-  * 
-  * @param {number} id id del lugar
-  * @returns info del lugar individual 
-  */
- export function getLugar(id) {
+/**
+ * 
+ * @param {number} id id del lugar
+ * @returns info del lugar individual 
+ */
+export function getLugar(id) {
     try {
         //const response = await fetch(url);
-        const response=[];
+        const response = [];
         if (!response.ok) {
             throw new Error("Error al obtener el lugar");
         }
-        const datos =  response.json();
+        const datos = response.json();
 
         return new Lugar(datos);
     } catch (error) {
@@ -67,31 +83,31 @@ export function getLugares() {
         throw error;
     }
 }
- 
- export function getEpisodios() {
+
+export function getEpisodios() {
     const episodiosData = EpisodesData;
-    if (!episodiosData|| episodiosData.length===0) {
+    if (!episodiosData || episodiosData.length === 0) {
         throw new Error("No hay datos")
     }
     const episodios = episodiosData.map(episodio =>
         new Episodio(episodio)
     );
     return episodios;
- }
+}
 
- /**
-  * 
-  * @param {number} id id del episodio
-  * @returns info del episodio individual 
-  */
-  export function getEpisodio(id) {
+/**
+ * 
+ * @param {number} id id del episodio
+ * @returns info del episodio individual 
+ */
+export function getEpisodio(id) {
     try {
         //const response = await fetch(url);
-        const response=[];
+        const response = [];
         if (!response.ok) {
             throw new Error("Error al obtener el episodio");
         }
-        const datos =  response.json();
+        const datos = response.json();
 
         return new Episodio(datos);
     } catch (error) {
