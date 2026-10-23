@@ -38,6 +38,7 @@ h2{
 .data-episode{
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: 0.2rem;
     padding: 0.5rem;
 }
