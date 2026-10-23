@@ -7,6 +7,7 @@
     <title>Rickstado de personajes</title>
     <script type="module" src="../js/personajes.js"></script>
     <script type="module" src="../js/equipo.js"></script>
+    <script type="module" src="../js/menu.js"></script>
     <link rel="stylesheet" href="../css/personajes.css">
 </head>
 
@@ -77,8 +78,17 @@
         </div> -->
     </div>
 
-    <button id="buttonAtras">Atras</button>
-    <button id="buttonAdelante">Adelante</button>
+    <div class="paginacion">
+        <button id="buttonAtras" class="buttonPage">
+            <span class="flecha">&larr;</span>
+            Atrás
+        </button>
+
+        <button id="buttonAdelante" class="buttonPage">
+            Adelante
+            <span class="flecha">&rarr;</span>
+        </button>
+    </div>
 
     <footer>
         <!-- Damos a los nombres una franja propia sobre las dos columnas. -->
