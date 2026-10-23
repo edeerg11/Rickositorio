@@ -58,16 +58,17 @@ function montarLista(listaPersonajes) {
         const imgFavoritos = document.createElement("img");
         imgFavoritos.src = "../img/Heart.png"
         imgFavoritos.classList.add("favorito");
-        imgFavoritos.onclick = function(){
+        imgFavoritos.onclick = function () {
             const favoritos = JSON.parse(localStorage.getItem("PersonajesFavorito")) || [];
-            favoritos.push(pj);
-            localStorage.setItem("PersonajesFavorito", JSON.stringify(favoritos));
+            if (!favoritos.find(personaje => personaje.id === pj.id)) {
+                favoritos.push(pj);
+                localStorage.setItem("PersonajesFavorito", JSON.stringify(favoritos));
+            }
         }
         divTarjeta.appendChild(imgFavoritos);
 
         const buttonVerMas = document.createElement("button");
         buttonVerMas.id = 'buttonVerMas';
-        // buttonVerMas.textContent = `Ver más`;
         buttonVerMas.addEventListener("click", function () {
             localStorage.setItem("IdPersonaje", pj.id);
         });
