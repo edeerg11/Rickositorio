@@ -106,7 +106,7 @@ function montarLista(listaPersonajes) {
         buttonVerMas.addEventListener("click", function () {
 
             localStorage.setItem("IdPersonaje", pj.id);
-            location.href = "vistaIndividual.html";
+            location.href = "infoPersonaje.html";
 
         });
 
