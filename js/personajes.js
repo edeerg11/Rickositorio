@@ -27,9 +27,10 @@ function montarLista(listaPersonajes) {
         divTarjeta.classList.add("tarjeta");
         lista.appendChild(divTarjeta);
 
-        const img = document.createElement("img");
-        img.src = pj.image;
-        divTarjeta.appendChild(img);
+        const imgPersonaje = document.createElement("img");
+        imgPersonaje.classList.add("imgPersonaje");
+        imgPersonaje.src = pj.image;
+        divTarjeta.appendChild(imgPersonaje);
 
         const p = document.createElement("p");
         p.textContent = `${pj.name}`;
@@ -54,14 +55,15 @@ function montarLista(listaPersonajes) {
         liOrigen.textContent = pj.origin.name;
         ul.appendChild(liOrigen);
 
-        const buttonFavoritos = document.createElement("button");
-        buttonFavoritos.textContent = `Favorito`;
-        buttonFavoritos.addEventListener("click", function () {
+        const imgFavoritos = document.createElement("img");
+        imgFavoritos.src = "../img/Heart.png"
+        imgFavoritos.classList.add("favorito");
+        imgFavoritos.onclick = function(){
             const favoritos = JSON.parse(localStorage.getItem("PersonajesFavorito")) || [];
             favoritos.push(pj);
             localStorage.setItem("PersonajesFavorito", JSON.stringify(favoritos));
-        });
-        divTarjeta.appendChild(buttonFavoritos);
+        }
+        divTarjeta.appendChild(imgFavoritos);
 
         const buttonVerMas = document.createElement("button");
         buttonVerMas.id = 'buttonVerMas';
