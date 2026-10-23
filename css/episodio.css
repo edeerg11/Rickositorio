@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+div{
+    /* border: 1px solid black; */
+    margin: 1rem;
+}
+/* Código definitivo */
+h2{
+    margin: 1rem;
+}
+h3{
+    margin: 1rem;
+}
+ul{
+    margin-left: 1.5rem;
+}
+li{
+    margin: 0.25rem 1rem;
+    padding: 0 0.5rem;
+}
