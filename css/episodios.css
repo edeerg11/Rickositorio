@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+div{
+    /* border: 1px solid black; */
+}
+h2{
+    margin: 1rem;
+}
+/* Código definitivo */
+#grid-episodes{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+/* #grid-episodes *{
+
+} */
+#links-pages{
+    text-align: center;
+}
+.card-episode{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: lightgray;
+    width: 15rem;
+    margin: 0.2rem;
+    padding: 0.5rem;
+}
+.data-episode{
+    display: flex;
+    flex-direction: row;
+    margin: 0.2rem;
+    padding: 0.5rem;
+}
+.controls-episode{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.2rem;
+    padding: 0.2rem;
+}
+.button-more{
+    margin: 0.1rem;
+    padding: 0.1rem;
+    background-color: gray;
+    border-radius: 1.25rem;
+    padding: 0.5rem;
+}
+.button-fav{
+    margin: 0.1rem;
+    padding: 0.1rem;
+}

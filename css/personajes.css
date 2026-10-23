@@ -1,0 +1,101 @@
+/* Contenedor de todas las tarjetas */
+.listaTarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 16px;
+}
+
+/* Tarjeta individual */
+.tarjeta {
+    background-color: rgb(239, 239, 239);
+
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+
+    border-radius: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imagen del personaje */
+.tarjeta .imgPersonaje {
+    height: 200px;
+    width: 250px;
+
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Cuerpo: información a la izquierda y favoritos a la derecha */
+.tarjeta .tarjetaBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+    gap: 10px;
+}
+
+/* Información del personaje */
+.tarjeta .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+}
+
+/* Nombre */
+.tarjeta .nombre {
+    font-weight: bold;
+    margin: 5px 0 15px;
+}
+
+/* Lista */
+.tarjeta .info ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Favoritos */
+.tarjeta .favorito {
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+    cursor: pointer;
+
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+/* Botón Ver más */
+.tarjeta .verMas {
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+
+    margin-top: auto;
+    padding: 8px 12px;
+    gap: 8px;
+
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Icono del botón */
+.tarjeta .iconVerMas {
+    width: 20px;
+    height: 20px;
+}
+
+/* Efecto al pasar el ratón */
+.tarjeta .verMas:hover {
+    background-color: #555;
+}
