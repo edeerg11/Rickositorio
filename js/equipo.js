@@ -3,12 +3,6 @@ const nombresEquipo = document.querySelector(".equipo");
 let posicionX = 0;
 let velocidadX= 0.5;
 
-function moverEquipo() {
-    posicionX = posicionX + velocidadX;
-    nombresEquipo.style.transform = `translateX(${posicionX}px)`;
-    requestAnimationFrame(moverEquipo);
-}
-
 requestAnimationFrame(moverEquipo);
 
 function moverEquipo() {
