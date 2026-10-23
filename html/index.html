@@ -11,8 +11,12 @@
 
 <body>
     <header>
-        <img src="../img/Group 121.png" alt="Rick and Morty">
-        <nav>
+        <a href="index.html"><img src="../img/Group 121.png" alt="Rick and Morty"></a>
+        <button type="button" class="menu-toggle" aria-controls="menu-principal" aria-expanded="false"
+        aria-label="Menú principal">
+        <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="menu-principal">
             <ul>
                 <li>
                     <a href="personajes.html">Personajes</a>
@@ -21,7 +25,7 @@
                     <a href="#">Localizaciones</a>
                 </li>
                 <li>
-                    <a href="#">Favoritos</a>
+                    <a href="favoritos.html">Favoritos</a>
                 </li>
                 <li>
                     <a href="#">Episodios</a>
@@ -31,29 +35,46 @@
     </header>
 
     <main>
-        <div class="bienvenida">
-            <h1>Explora el multiverso</h1>
-            <div>
-                <button type="button" disabled>Oscuro</button>
-                <button type="button" disabled>Claro</button>
+        <div class="portada">
+            <div class="bienvenida">
+                <h1>Explora el multiverso</h1>
+                <div>
+                    <button type="button" disabled>Oscuro</button>
+                    <button type="button" disabled>Claro</button>
+                </div>
+            </div>
+            <img src="../img/HighLightImage.png" alt="Rick sujetando los párpados de Morty">
+        </div>
+    </main>
+   <footer>
+        <!-- Damos a los nombres una franja propia sobre las dos columnas. -->
+        <div class="equipo-franja">
+            <p class="equipo">· Eder · Eneko · Guillermo ·Markel · Ruth ·</p>
+        </div>
+        <div class="footer-contenido">
+            <div class="footer-proyecto">
+                <h2>Ricksplorador</h2>
+                <p>Proyecto de equipo</p>
+                <p><a href="https://github.com/edeerg11/Rickositorio">Ver Rickositorio en GitHub</a></p>
+            </div>
+
+            <div class="footer-colaboraciones">
+                <h2>Marcas que han colaborado con Rick y Morty</h2>
+                <div class="marcas">
+                    <a href="https://us.puma.com/us/en/collaborations/partnerships/rick-and-morty"><img
+                            src="../img/PUMA.webp" alt="Ver colección de PUMA y Rick y Morty"></a>
+                    <a
+                        href="https://www.irwendys.com/news/news-details/2021/Wendys-Expands-Partnership-With-Adult-Swim-On-Hit-Series-Rick-And-Morty/default.aspx"><img
+                            src="../img/Wendys.png" alt="Ver colaboración de Wendy’s con Rick y Morty"></a>
+
+                </div>
             </div>
         </div>
-        <img src="../img/HighLightImage.png" alt="Rick sujetando los párpados de Morty">
-    </main>
-    <footer>
-        <p>Ricksplorador — Proyecto de equipo</p>
-        <p class="equipo">Eder, Eneko, Guillermo, Markel y Ruth.</p>
-        <p><a href="https://github.com/edeerg11/Rickositorio">Ver Rickositorio en GitHub</a></p>
-        <p>Marcas que han colaborado con Rick y Morty</p>
-        <div class="marcas">
-            <a href="https://us.puma.com/us/en/collaborations/partnerships/rick-and-morty"><img src="../img/PUMA.webp"
-                    alt="Ver colección de PUMA y Rick y Morty"></a>
-            <a
-                href="https://www.irwendys.com/news/news-details/2021/Wendys-Expands-Partnership-With-Adult-Swim-On-Hit-Series-Rick-And-Morty/default.aspx"><img
-                    src="../img/Wendys.png" alt="Ver colaboración de Wendy’s con Rick y Morty"></a>
-        </div>
-        <p>© 2026 Equipo Ricksplorador</p>
+        <p class="footer-copyright">© 2026 Equipo Ricksplorador</p>
     </footer>
+
+    <script src="../js/menu.js"></script>
+    <script src="../js/equipo.js"></script>
 
 </body>
 
