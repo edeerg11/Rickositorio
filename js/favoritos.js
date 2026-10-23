@@ -14,8 +14,21 @@ function leerPersonajesFavoritos() {
     return JSON.parse(guardados);
 }
 
+function leerEpisodiosFavoritos() {
+    const guardados = localStorage.getItem("episodiosFavorito");
+
+    if (guardados === null) {
+        return [];
+    }
+
+    return JSON.parse(guardados);
+}
+
 // Comprobación temporal de la lectura.
 const personajesFavoritos = leerPersonajesFavoritos();
+const epispdiosFavoritos = leerEpisodiosFavoritos();
+console.log(epispdiosFavoritos);
+
 
 const contenedorPersonajes = document.getElementById("favoritos-personajes");
 
