@@ -104,10 +104,8 @@ function montarLista(listaPersonajes) {
         buttonVerMas.classList.add("verMas");
 
         buttonVerMas.addEventListener("click", function () {
-
             localStorage.setItem("IdPersonaje", pj.id);
             location.href = "infoPersonaje.html";
-
         });
 
         // Icono del botón
@@ -117,12 +115,15 @@ function montarLista(listaPersonajes) {
         iconVerMas.alt = "";
 
         buttonVerMas.appendChild(iconVerMas);
-        buttonVerMas.appendChild(document.createTextNode(" Ver más"));
+        buttonVerMas.appendChild(document.createTextNode("Más información"));
 
         divTarjeta.appendChild(buttonVerMas);
     });
 
     actualizarBotones(pagina, maxPaginas);
+    let pagActual = document.getElementById("numPagina");
+    pagActual.textContent = `Página ${pagina} de ${maxPaginas}`;
+
 }
 
 function getFavoritos() {
