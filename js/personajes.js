@@ -89,7 +89,6 @@ function montarLista(listaPersonajes) {
             }
         });
 
-        // IMPORTANTE: favoritos va dentro de tarjetaBody
         divTarjetaBody.appendChild(imgFavoritos);
 
         // Botón Ver más
@@ -113,12 +112,6 @@ function montarLista(listaPersonajes) {
         buttonVerMas.appendChild(document.createTextNode(" Ver más"));
 
         divTarjeta.appendChild(buttonVerMas);
-
-        const linkVerMas = document.createElement("a");
-        linkVerMas.href = "infoPersonaje.html";
-        linkVerMas.textContent = "Ver más";
-        buttonVerMas.appendChild(linkVerMas);
-
     });
 }
 
