@@ -33,7 +33,8 @@ function montarLista(listaPersonajes) {
         divTarjeta.appendChild(imgPersonaje);
 
         const p = document.createElement("p");
-        p.textContent = `${pj.name}`;
+        p.classList.add("nombre");
+        p.textContent = pj.name;
         divTarjeta.appendChild(p);
 
         const divInfo = document.createElement("div");
@@ -65,14 +66,20 @@ function montarLista(listaPersonajes) {
                 localStorage.setItem("PersonajesFavorito", JSON.stringify(favoritos));
             }
         }
-        divTarjeta.appendChild(imgFavoritos);
+        divInfo.appendChild(imgFavoritos);
 
         const buttonVerMas = document.createElement("button");
+        buttonVerMas.classList.add("verMas");
         buttonVerMas.id = 'buttonVerMas';
         buttonVerMas.addEventListener("click", function () {
             localStorage.setItem("IdPersonaje", pj.id);
         });
         divTarjeta.appendChild(buttonVerMas);
+
+        const iconVerMas = document.createElement("img");
+        iconVerMas.src = "../img/Question-1.svg"
+        iconVerMas.classList.add("iconVerMas");
+        buttonVerMas.appendChild(iconVerMas);
 
         const linkVerMas = document.createElement("a");
         linkVerMas.href = "vistaIndividual.html";
