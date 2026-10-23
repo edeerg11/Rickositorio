@@ -13,6 +13,8 @@ async function mostrarPersonajes(number) {
     console.log(maxPaginas);
 
     montarLista(listaPersonajes.personajes);
+
+    actualizarBotones(pagina, maxPaginas);
 }
 
 function montarLista(listaPersonajes) {
@@ -66,17 +68,21 @@ function montarLista(listaPersonajes) {
         liOrigen.textContent = pj.origin.name;
         ul.appendChild(liOrigen);
 
+        let favoritos = getFavoritos();
+
         // Icono de favoritos
         const imgFavoritos = document.createElement("img");
-        imgFavoritos.src = "../img/Heart.png";
+        if (!favoritos.find(personaje => personaje.id === pj.id)) {
+            imgFavoritos.src = "../img/Corazon_vacio.png";
+        } else {
+            imgFavoritos.src = "../img/Corazon_lleno.png";
+        }
         imgFavoritos.classList.add("favorito");
         imgFavoritos.alt = "Añadir a favoritos";
 
         imgFavoritos.addEventListener("click", function () {
 
-            const favoritos = JSON.parse(
-                localStorage.getItem("PersonajesFavorito")
-            ) || [];
+            favoritos = getFavoritos();
 
             if (!favoritos.find(personaje => personaje.id === pj.id)) {
 
@@ -86,6 +92,8 @@ function montarLista(listaPersonajes) {
                     "PersonajesFavorito",
                     JSON.stringify(favoritos)
                 );
+
+                imgFavoritos.src = "../img/Corazon_lleno.png";
             }
         });
 
@@ -98,7 +106,7 @@ function montarLista(listaPersonajes) {
         buttonVerMas.addEventListener("click", function () {
 
             localStorage.setItem("IdPersonaje", pj.id);
-            location.href = "vistaIndividual.html";
+            location.href = "infoPersonaje.html";
 
         });
 
@@ -113,6 +121,12 @@ function montarLista(listaPersonajes) {
 
         divTarjeta.appendChild(buttonVerMas);
     });
+
+    actualizarBotones(pagina, maxPaginas);
+}
+
+function getFavoritos() {
+    return JSON.parse(localStorage.getItem("PersonajesFavorito")) || [];
 }
 
 async function avanzarPagina() {
@@ -136,5 +150,11 @@ buttonAdelante.addEventListener("click", avanzarPagina);
 
 const buttonAtras = document.getElementById("buttonAtras");
 buttonAtras.addEventListener("click", retrocederPagina);
+
+// Ejemplo: actualizar el estado de los botones
+function actualizarBotones(paginaActual, totalPaginas) {
+    buttonAtras.disabled = paginaActual === 1;
+    buttonAdelante.disabled = paginaActual === totalPaginas;
+}
 
 await mostrarPersonajes();
