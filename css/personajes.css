@@ -32,60 +32,68 @@
     object-fit: cover;
 }
 
-/* Nombre del personaje */
-.tarjeta .nombre {
-    align-self: flex-start;
-    font-weight: bold;
-    text-align: center;
-
-    margin: 5px 0 20px;
-}
-
-/* Información y favoritos */
-.tarjeta .info {
+/* Cuerpo: información a la izquierda y favoritos a la derecha */
+.tarjeta .tarjetaBody {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 
     width: 100%;
+    gap: 10px;
 }
 
-/* Lista de información */
+/* Información del personaje */
+.tarjeta .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+}
+
+/* Nombre */
+.tarjeta .nombre {
+    font-weight: bold;
+    margin: 5px 0 15px;
+}
+
+/* Lista */
 .tarjeta .info ul {
     margin: 0;
     padding-left: 20px;
 }
 
-/* Imagen de favoritos */
+/* Favoritos */
 .tarjeta .favorito {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
 
     object-fit: contain;
     cursor: pointer;
 
-    margin-left: auto;
+    flex-shrink: 0;
+    margin-top: 5px;
 }
 
-/* Boton Ver más */
+/* Botón Ver más */
 .tarjeta .verMas {
     display: flex;
-    align-self: flex-end;
     align-items: center;
+    align-self: flex-end;
+
     margin-top: auto;
     padding: 8px 12px;
+    gap: 8px;
+
     border-radius: 6px;
+    cursor: pointer;
 }
 
+/* Icono del botón */
 .tarjeta .iconVerMas {
-    padding-right: 10px;
     width: 20px;
     height: 20px;
 }
-
-/* .tarjeta .verMas a{
-    align-self: center;
-} */
 
 /* Efecto al pasar el ratón */
 .tarjeta .verMas:hover {
