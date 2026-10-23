@@ -59,13 +59,13 @@ export async function getEpisodios(numberPage = 1) {
     };
 }
 
-export async function getLugares() {
+export async function getLugares(numberPage = 1) {
     const API_URL = "https://rickandmortyapi.com/api/location";
 
     const url = numberPage === 1 ?
         API_URL
         : `${API_URL}?page=${numberPage}`;
-
+    
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -76,12 +76,12 @@ export async function getLugares() {
     if (!data.results || data.results.length === 0) {
         throw new Error("No hay datos")
     }
-    const episodios = data.results.map(p =>
+    const lugar = data.results.map(p =>
         new Lugar(p)
     )
 
     return {
-        episodios,
+        lugar,
         info: data.info
     };
 }
