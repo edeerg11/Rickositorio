@@ -1,23 +1,24 @@
 import { getEpisodio,getElementByURL } from "./main.js";
 let episodio;
 
-function buildReportEpisode(){
+async function buildReportEpisode(){
    document.getElementById("h2-episode").innerText = `T${episodio.temporada}E${episodio.episodio}`;
    document.getElementById("h3-title").innerText = episodio.name;
    document.getElementById("release-date").innerHTML += episodio.estreno;
    let characterList = document.getElementById("character-list");
-   for(let entrada of episodio.personajes){
+   for(let url of episodio.personajes){
     let li = document.createElement("li");
     let a = document.createElement("a");
-    let personaje = getElementByURL();
-    a.innerText = "";
+    let personaje = await getElementByURL(url,"personaje");
+    a.innerText = personaje.name;
     a.href="./infoPersonaje.html";
     a.addEventListener("click",function(e){
         e.preventDefault();
-        localStorage.setItem("idPersonaje",0);
+        localStorage.setItem("IdPersonaje",personaje.id);
         open(this.href,"_self");
     })
     li.append(a);
+    characterList.append(li);
    }
 }
 // === MAIN ===
