@@ -72,7 +72,7 @@ function montarLista(listaPersonajes) {
         divTarjeta.appendChild(buttonVerMas);
 
         const linkVerMas = document.createElement("a");
-        linkVerMas.href = "vistaIndividual.html";
+        linkVerMas.href = "infoPersonaje.html";
         linkVerMas.textContent = "Ver más";
         buttonVerMas.appendChild(linkVerMas);
 
