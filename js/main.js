@@ -59,13 +59,13 @@ export async function getEpisodios(numberPage = 1) {
     };
 }
 
-export async function getLugares() {
+export async function getLugares(numberPage = 1) {
     const API_URL = "https://rickandmortyapi.com/api/location";
 
     const url = numberPage === 1 ?
         API_URL
         : `${API_URL}?page=${numberPage}`;
-
+    
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -76,12 +76,12 @@ export async function getLugares() {
     if (!data.results || data.results.length === 0) {
         throw new Error("No hay datos")
     }
-    const episodios = data.results.map(p =>
+    const lugar = data.results.map(p =>
         new Lugar(p)
     )
 
     return {
-        episodios,
+        lugar,
         info: data.info
     };
 }
@@ -91,20 +91,17 @@ export async function getLugares() {
  * @param {number} id id del personaje
  * @returns info del personaje individual 
  */
-export function getPersonaje(id) {
-    try {
-        //const response = await fetch(url);
-        const response = [];
-        if (!response.ok) {
-            throw new Error("Error al obtener el personaje");
-        }
-        const datos = response.json();
+export async function getPersonaje(id) {
+    const API_URL = `https://rickandmortyapi.com/api/character/${id}`;
+    console.log(API_URL);
 
-        return new Personaje(datos);
-    } catch (error) {
-        console.error(error);
-        throw error;
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+        throw new Error('Error al obtener los datos del personaje');
     }
+    const data = await response.json();
+    const personaje = new Personaje(data);
+    return personaje;
 }
 
 
@@ -114,23 +111,18 @@ export function getPersonaje(id) {
  * @param {number} id id del lugar
  * @returns info del lugar individual 
  */
-export function getLugar(id) {
-    try {
-        //const response = await fetch(url);
-        const response = [];
-        if (!response.ok) {
-            throw new Error("Error al obtener el lugar");
-        }
-        const datos = response.json();
+export async function getLugar(id) {
+const API_URL = `https://rickandmortyapi.com/api/location/${id}`;
+    console.log(API_URL);
 
-        return new Lugar(datos);
-    } catch (error) {
-        console.error(error);
-        throw error;
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+        throw new Error('Error al obtener los datos del lugar');
     }
+    const data = await response.json();
+    const episodio = new Episodio(data);
+    return episodio;
 }
-
-
 
 
 /**
@@ -138,18 +130,15 @@ export function getLugar(id) {
  * @param {number} id id del episodio
  * @returns info del episodio individual 
  */
-export function getEpisodio(id) {
-    try {
-        //const response = await fetch(url);
-        const response = [];
-        if (!response.ok) {
-            throw new Error("Error al obtener el episodio");
-        }
-        const datos = response.json();
+export async function getEpisodio(id) {
+    const API_URL = `https://rickandmortyapi.com/api/episode/${id}`;
+    console.log(API_URL);
 
-        return new Episodio(datos);
-    } catch (error) {
-        console.error(error);
-        throw error;
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+        throw new Error('Error al obtener los datos del episodio');
     }
+    const data = await response.json();
+    const episodio = new Episodio(data);
+    return episodio;
 }
