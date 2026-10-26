@@ -32,6 +32,9 @@ function montarLista(listaPersonajes) {
     });
 
     actualizarBotones(pagina, maxPaginas);
+    let pagActual = document.getElementById("numPagina");
+    pagActual.textContent = `Página ${pagina} de ${maxPaginas}`;
+
 }
 
 
