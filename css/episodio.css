@@ -52,3 +52,11 @@ ul li a figure figcaption{
 #release-date{
     font-size: 1.25rem;
 }
+
+/* Usamos una ilustración pequeña en la portada del episodio. */
+@media (min-width: 768px) {
+    .portada img {
+        width: 15%;
+        max-width: 700px;
+    }
+}
