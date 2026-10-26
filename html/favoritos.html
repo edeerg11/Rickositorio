@@ -16,7 +16,7 @@
         <a href="index.html"><img src="../img/Group 121.png" alt="Rick and Morty"></a>
         <button type="button" class="menu-toggle" aria-controls="menu-principal" aria-expanded="false"
             aria-label="Menú principal">
-            <span aria-hidden="true">☰</span>
+            <span aria-hidden>="true">☰</span>
         </button>
         <nav id="menu-principal">
             <ul>
@@ -49,20 +49,28 @@
         </div>
 
         <!-- Agrupamos los favoritos por categoría. -->
-        <section>
-            <h2>Personajes favoritos</h2>
+
+        <!-- Personaje Favoritos-->
+        <section class="seccion-favoritos">
+            <h2 id="titulo-personajes">Personajes favoritos</h2>
+            <p id="sin-personajes" class= "mensaje-vacio" hidden>>Aún no tienes favoritos.</p>
             <!-- Aquí mostraré con JavaScript los personajes guardados como favoritos. -->
             <div id="favoritos-personajes" class="listaTarjetas"></div>
         </section>
 
-        <section>
-            <h2>Episodios favoritos</h2>
-            <div id="favoritos-episodios"></div>
+        <!-- Episodios favoritos-->
+        <section class="seccion-favoritos">
+            <h2 id="titulo-episodios">Episodios favoritos</h2>
+            <p id="sin-episodios" class="mensaje-vacio" hidden>Aún no tienes episodios favoritos.</p>
+            <div id="favoritos-episodios" class="listaTarjetas"></div>
         </section>
 
-        <section>
-            <h2>Localizaciones favoritas</h2>
-            <div id="favoritos-lugares"></div>
+        <!-- Localizaciones Favoritas -->
+
+        <section class="seccion-favoritos">
+            <h2 id="titulo-lugares">Localizaciones favoritas</h2>
+            <p id="sin-lugares" class="mensaje-vacio" hidden>Aún no tienes localizaciones favoritas.</p>
+            <div id="favoritos-lugares" class="listaTarjetas"></div>
         </section>
 
     </main>
