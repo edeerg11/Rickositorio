@@ -64,8 +64,16 @@
 
 /* Lista */
 .tarjeta .info ul {
+    list-style: none;
     margin: 0;
-    padding-left: 20px;
+    padding-left: 0;
+}
+
+.tarjeta .info li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
 /* Favoritos */

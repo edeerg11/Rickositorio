@@ -37,8 +37,6 @@ function montarLista(listaPersonajes) {
 
 }
 
-
-
 async function avanzarPagina() {
     if (pagina < maxPaginas) {
         pagina += 1;
