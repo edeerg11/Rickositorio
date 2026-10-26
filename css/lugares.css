@@ -1,7 +1,21 @@
-.lugar{
-border-radius: 7px;
-background-color: #F1F1F1;
-display: inline-block;
-box-sizing: border-box;
-padding: 1em;
+.lugar {
+    border-radius: 7px;
+    background-color: #F1F1F1;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 1em;
+}
+
+.btn-sabermas:hover {
+    border-radius: 7px;
+    background-color: #11B0C8;
+}
+
+.btn-sabermas a {
+    text-decoration: none;
+    color: black;
+}
+
+.cont-sbrmas-icon {
+    
 }
