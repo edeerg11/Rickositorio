@@ -16,7 +16,7 @@ function muestraDatos() {
     imagen.src = personaje.image;
     imagen.alt = personaje.name;
     imagen.className = "character-image";
-    imagen.setAttribute("width")
+    imagen.width=700;
     container.append(imagen);
 
     const info = document.createElement("section");
