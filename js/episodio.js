@@ -1,6 +1,6 @@
 import { getEpisodio, getElementByURL } from "./main.js";
 let episodio;
-const MAX_CHARS = 20;
+const MAX_CHARS = 10;
 
 async function buildReportEpisode() {
     let chars = 0;
