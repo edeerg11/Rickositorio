@@ -33,7 +33,7 @@ export function crearTarjetaPersonajeFav(personaje) {
     const lista = document.createElement("ul");
 
     const estado = document.createElement("li");
-    estado.textContent = personaje.status;
+    estado.textContent = personaje.status;.
 
     const especie = document.createElement("li");
     especie.textContent = personaje.species;
