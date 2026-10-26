@@ -16,7 +16,7 @@
     background-color: rgb(239, 239, 239);
 
     width: 400px;
-    height: 400px;
+    /* height: 400px; */
     flex-shrink: 0;
 
     border-radius: 15px;

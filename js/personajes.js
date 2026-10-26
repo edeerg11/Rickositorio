@@ -1,4 +1,4 @@
-import { getPersonajes } from "./main.js";
+import { getPersonajes, getPersonajesFiltrados } from "./main.js";
 import { crearTarjetaPersonaje } from "./tarjetaPersonaje.js";
 
 let pagina = 1;
@@ -14,7 +14,6 @@ async function mostrarPersonajes(number) {
     console.log(maxPaginas);
 
     montarLista(listaPersonajes.personajes);
-
 }
 
 function montarLista(listaPersonajes) {
@@ -64,5 +63,38 @@ function actualizarBotones(paginaActual, totalPaginas) {
     buttonAtras.disabled = paginaActual === 1;
     buttonAdelante.disabled = paginaActual === totalPaginas;
 }
+
+const formulario = document.getElementById("formularioFiltros");
+
+formulario.addEventListener("submit", async function (event) {
+    event.preventDefault(); // Evita que la página se recargue
+    let todosLosPersonajes = [];
+
+    for (let i = 1; i <= maxPaginas; i++) {
+        const respuesta = await getPersonajes(i);
+        todosLosPersonajes.push(...respuesta.personajes); // Los 3 puntos hacen que el array resultante sea unidimensional
+    }
+
+    // Obtener los valores del formulario
+    const name = document.getElementById("nombre").value
+        .trim()
+        .toLowerCase();
+
+    const estado = document.getElementById("estado").value
+        .toLowerCase();
+
+    const filtro = {
+        nombre : name,
+        estado : estado
+    }
+
+    // Filtrar los personajes
+    const personajesFiltrados = await getPersonajesFiltrados(pagina, filtro);
+
+    console.log(personajesFiltrados);
+
+    // Mostrar solamente los personajes que coinciden
+    montarLista(personajesFiltrados.personajes);
+});
 
 await mostrarPersonajes();

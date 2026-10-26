@@ -50,6 +50,24 @@
         </div>
     </main>
 
+    <form id="formularioFiltros">
+        <label for="nombre">Name</label>
+        <input type="text" id="nombre" name="nombre">
+        <br>
+
+        <label for="estado">Status</label>
+        <select name="estado" id="estado">
+            <option value="">Select status</option>
+            <option value="alive">Alive</option>
+            <option value="dead">Dead</option>
+            <option value="unknown">Unknown</option>
+        </select>
+        <br>
+
+        <button type="submit">Search</button>
+        <button type="reset">Clear filters</button>
+    </form>
+
     <div class="listadoPJ">
         <ul id="listaPersonajes">
 
