@@ -156,8 +156,8 @@ export async function getLugar(id) {
         throw new Error('Error al obtener los datos del lugar');
     }
     const data = await response.json();
-    const episodio = new Episodio(data);
-    return episodio;
+    const lugar = new Lugar(data);
+    return lugar;
 }
 
 
