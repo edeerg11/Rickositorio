@@ -1,4 +1,5 @@
 import { getEpisodio, getElementByURL } from "./main.js";
+import { crearTarjetaPersonaje } from "./tarjetaPersonaje.js";
 let episodio;
 const MAX_CHARS = 10;
 
@@ -9,29 +10,11 @@ async function buildReportEpisode() {
     document.getElementById("release-date").innerHTML += episodio.estreno;
     let characterList = document.getElementById("character-list");
     for (let url of episodio.personajes) {
-        /*********VARS*************** */
-        let li = document.createElement("li");
-        let a = document.createElement("a");
-        let img = document.createElement("img");
-        let figure = document.createElement("figure");
-        let figcaption = document.createElement("figcaption");
         let personaje = await getElementByURL(url, "personaje");
-        /* */
-        img.setAttribute("alt",`Imagen de ${personaje.name}`);
-        img.src = personaje.image;
-        figcaption.innerText = personaje.name;
-        figure.append(img);
-        figure.append(figcaption);
-        a.href = "./infoPersonaje.html";
-        a.addEventListener("click", function (e) {
-            e.preventDefault();
-            localStorage.setItem("IdPersonaje", personaje.id);
-            open(this.href, "_self");
-        })
-        a.append(figure);
-        li.append(a);
-        characterList.append(li);
-        if(++chars === MAX_CHARS) break;
+        let favorito = (JSON.parse(localStorage.getItem("episodiosFavorito")) || [])
+            .find((e) => e.id === personaje.id) !== undefined;
+        characterList.append(crearTarjetaPersonaje(personaje, favorito));
+        if (++chars === MAX_CHARS) break;
     }
 }
 // === MAIN ===
