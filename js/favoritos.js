@@ -1,4 +1,5 @@
 import { crearTarjetaPersonaje } from "./tarjetaPersonaje.js";
+import { crearTarjetaEpisodioFav } from "./tarjetaEpisodio.js";
 
 /*
  Recupera los personajes guardados como favoritos.
@@ -26,16 +27,28 @@ function leerEpisodiosFavoritos() {
 
 // Comprobación temporal de la lectura.
 const personajesFavoritos = leerPersonajesFavoritos();
-const epispdiosFavoritos = leerEpisodiosFavoritos();
-console.log(epispdiosFavoritos);
+const episodiosFavoritos = leerEpisodiosFavoritos();
+console.log(episodiosFavoritos);
 
 
 const contenedorPersonajes = document.getElementById("favoritos-personajes");
+const contenedorEpisodios = document.getElementById("favoritos-episodios");
+const contenedorLocalizaciones = document.getElementById("favoritos-lugares");
+
 
 // Creo una tarjeta por cada personaje guardado y la añado a la página.
 personajesFavoritos.forEach(function (personaje) {
     const tarjeta = crearTarjetaPersonaje(personaje, true);
     contenedorPersonajes.appendChild(tarjeta);
+});
+
+//Crear tarjetas para los episodios favoritos.
+episodiosFavoritos.forEach(function (episodio) {
+
+    const tarjeta = crearTarjetaEpisodioFav(episodio);
+
+    contenedorEpisodios.appendChild(tarjeta);
+
 });
 
 // Comprueba si una sección tiene tarjetas
