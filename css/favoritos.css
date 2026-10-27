@@ -223,3 +223,57 @@ footer {
 .mensaje-vacio[hidden] {
     display: none;
 }
+
+/* Tarjetas de episodios favoritos */
+
+#favoritos-episodios .card-episode {
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    padding: 25px;
+    width: 320px;
+    max-width: 100%;
+    min-height: 190px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+#favoritos-episodios .data-episode {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    font-size: 18px;
+}
+
+#favoritos-episodios .data-episode span:first-child {
+    font-size: 30px;
+}
+
+#favoritos-episodios .controls-episode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#favoritos-episodios .button-more a {
+    display: inline-block;
+    background-color: #11b0c8;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#favoritos-episodios .button-fav {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#favoritos-episodios .button-fav img {
+    width: 55px;
+    height: 55px;
+}
