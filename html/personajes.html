@@ -50,6 +50,39 @@
         </div>
     </main>
 
+    <form id="formularioFiltros" class="formulario-filtros">
+
+        <h2 class="titulo-filtros">Buscar personajes</h2>
+
+        <div class="campos-filtros">
+            <div class="campo-filtro">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre del personaje...">
+            </div>
+
+            <div class="campo-filtro">
+                <label for="estado">Estado</label>
+                <select name="estado" id="estado">
+                    <option value="">Seleccione estado</option>
+                    <option value="alive">Vivo</option>
+                    <option value="dead">Muerto</option>
+                    <option value="unknown">Desconocido</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="botones-filtros">
+            <button type="submit" class="boton-buscar">
+                Buscar
+            </button>
+
+            <button type="reset" class="boton-limpiar">
+                Limpiar filtros
+            </button>
+        </div>
+
+    </form>
+
     <div class="listadoPJ">
         <ul id="listaPersonajes">
 
