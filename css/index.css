@@ -147,8 +147,18 @@ footer {
         justify-content: space-between;
     }
 
+    /* Alineo el título con la imagen de PUMA. */
+    .footer-colaboraciones h2 {
+        margin-left: 60px;
+    }
+
     .marcas {
         flex-direction: row;
+    }
+
+    /* Centro visualmente la imagen de Wendy's seleccionando el segundo enlace de .marcas en el HTML. */
+    .marcas a:nth-child(2) {
+        transform: translateX(-24px);
     }
 
     .marcas a {

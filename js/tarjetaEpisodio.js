@@ -13,17 +13,9 @@ export function crearTarjetaEpisodioFav(episodio) {
     const datos = document.createElement("div");
     datos.classList.add("data-episode");
 
-    // Icono de película
-    const icono = document.createElement("span");
-    icono.textContent = "🎞";
-
-    // Nombre, temporada y episodio
-    const nombre = document.createElement("span");
-    nombre.textContent =
+    // Muestro los datos del episodio como en episodios.js.
+    datos.textContent =
         `${episodio.name} | T${episodio.temporada}E${episodio.episodio}`;
-
-    datos.appendChild(icono);
-    datos.appendChild(nombre);
 
     // Contenedor de los botones
     const controles = document.createElement("div");
