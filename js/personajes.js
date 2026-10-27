@@ -22,6 +22,8 @@ function montarLista(listaPersonajes) {
 
     lista.innerHTML = "";
 
+    console.log(listaPersonajes);
+
     listaPersonajes.forEach(pj => {
 
         const tarjeta = crearTarjetaPersonaje(pj);
@@ -33,16 +35,22 @@ function montarLista(listaPersonajes) {
     // maxPaginas = listaPersonajes.info.pages;
 
     actualizarBotones(pagina, maxPaginas);
-    let pagActual = document.getElementById("numPagina");
-    pagActual.textContent = `Página ${pagina} de ${maxPaginas}`;
+
+    const pagActual = document.getElementById("numPagina");
+
+    if (listaPersonajes.length === 0) {
+        pagActual.textContent = "No hay resultados";
+    } else {
+        pagActual.textContent = `Página ${pagina} de ${maxPaginas}`;
+    }
 
 }
 
 const formulario = document.getElementById("formularioFiltros");
 let filtro = {
-        nombre,
-        estado
-    }
+    nombre,
+    estado
+}
 
 formulario.addEventListener("submit", async function (event) {
     event.preventDefault(); // Evita que la página se recargue
@@ -60,10 +68,14 @@ formulario.addEventListener("submit", async function (event) {
         estado: estado
     }
 
+    pagina = 1;
+
     // Filtrar los personajes
     const personajesFiltrados = await getPersonajesFiltrados(pagina, filtro);
 
     console.log(personajesFiltrados);
+
+    maxPaginas = personajesFiltrados.info.pages;
 
     // Mostrar solamente los personajes que coinciden
     montarLista(personajesFiltrados.personajes);
@@ -72,7 +84,12 @@ formulario.addEventListener("submit", async function (event) {
 async function avanzarPagina() {
     if (pagina < maxPaginas) {
         pagina += 1;
+
         listaPersonajes = await getPersonajesFiltrados(pagina, filtro);
+
+        // Actualizamos el total de páginas
+        maxPaginas = listaPersonajes.info.pages;
+
         montarLista(listaPersonajes.personajes);
     }
 }
@@ -80,7 +97,12 @@ async function avanzarPagina() {
 async function retrocederPagina() {
     if (pagina > 1) {
         pagina -= 1;
+
         listaPersonajes = await getPersonajesFiltrados(pagina, filtro);
+
+        // Actualizamos el total de páginas
+        maxPaginas = listaPersonajes.info.pages;
+
         montarLista(listaPersonajes.personajes);
     }
 }
@@ -91,10 +113,12 @@ buttonAdelante.addEventListener("click", avanzarPagina);
 const buttonAtras = document.getElementById("buttonAtras");
 buttonAtras.addEventListener("click", retrocederPagina);
 
-// Ejemplo: actualizar el estado de los botones
+// Actualizar el estado de los botones
 function actualizarBotones(paginaActual, totalPaginas) {
-    buttonAtras.disabled = paginaActual === 1;
-    buttonAdelante.disabled = paginaActual === totalPaginas;
+    buttonAtras.disabled = paginaActual <= 1;
+
+    buttonAdelante.disabled =
+        totalPaginas === 0 || paginaActual >= totalPaginas;
 }
 
 await mostrarPersonajes();
