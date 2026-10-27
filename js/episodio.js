@@ -11,7 +11,7 @@ async function buildReportEpisode() {
     let characterList = document.getElementById("character-list");
     for (let url of episodio.personajes) {
         let personaje = await getElementByURL(url, "personaje");
-        let favorito = (JSON.parse(localStorage.getItem("episodiosFavorito")) || [])
+        let favorito = (JSON.parse(localStorage.getItem("PersonajesFavorito")) || [])
             .find((e) => e.id === personaje.id) !== undefined;
         characterList.append(crearTarjetaPersonaje(personaje, favorito));
         if (++chars === MAX_CHARS) break;
