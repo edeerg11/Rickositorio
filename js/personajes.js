@@ -1,4 +1,4 @@
-import { getPersonajes } from "./main.js";
+import { getPersonajes, getPersonajesFiltrados } from "./main.js";
 import { crearTarjetaPersonaje } from "./tarjetaPersonaje.js";
 
 let pagina = 1;
@@ -14,7 +14,6 @@ async function mostrarPersonajes(number) {
     console.log(maxPaginas);
 
     montarLista(listaPersonajes.personajes);
-
 }
 
 function montarLista(listaPersonajes) {
@@ -22,6 +21,8 @@ function montarLista(listaPersonajes) {
     const lista = document.getElementById("listaTarjetas");
 
     lista.innerHTML = "";
+
+    console.log(listaPersonajes);
 
     listaPersonajes.forEach(pj => {
 
@@ -31,18 +32,79 @@ function montarLista(listaPersonajes) {
 
     });
 
+    // maxPaginas = listaPersonajes.info.pages;
+
     actualizarBotones(pagina, maxPaginas);
-    let pagActual = document.getElementById("numPagina");
-    pagActual.textContent = `Página ${pagina} de ${maxPaginas}`;
+
+    const pagActual = document.getElementById("numPagina");
+
+    if (listaPersonajes.length === 0) {
+        pagActual.textContent = "No hay resultados";
+    } else {
+        pagActual.textContent = `Página ${pagina} de ${maxPaginas}`;
+    }
 
 }
 
+const formulario = document.getElementById("formularioFiltros");
+let filtro = {
+    nombre,
+    estado
+}
 
+formulario.addEventListener("submit", async function (event) {
+    event.preventDefault(); // Evita que la página se recargue
+
+    // Obtener los valores del formulario
+    const name = document.getElementById("nombre").value
+        .trim()
+        .toLowerCase();
+
+    const estado = document.getElementById("estado").value
+        .toLowerCase();
+
+    filtro = {
+        nombre: name,
+        estado: estado
+    }
+
+    pagina = 1;
+
+    // Filtrar los personajes
+    const personajesFiltrados = await getPersonajesFiltrados(pagina, filtro);
+
+    console.log(personajesFiltrados);
+
+    maxPaginas = personajesFiltrados.info.pages;
+
+    // Mostrar solamente los personajes que coinciden
+    montarLista(personajesFiltrados.personajes);
+});
+
+const buttonLimpiar = document.getElementById("boton-limpiar");
+buttonLimpiar.addEventListener("click", async function () {
+    // Limpiar los filtros guardados
+    filtro = {
+        nombre: "",
+        estado: ""
+    };
+
+    // Volver a la primera página
+    pagina = 1;
+
+    // Mostrar la lista original de personajes
+    await mostrarPersonajes();
+});
 
 async function avanzarPagina() {
     if (pagina < maxPaginas) {
         pagina += 1;
-        listaPersonajes = await getPersonajes(pagina);
+
+        listaPersonajes = await getPersonajesFiltrados(pagina, filtro);
+
+        // Actualizamos el total de páginas
+        maxPaginas = listaPersonajes.info.pages;
+
         montarLista(listaPersonajes.personajes);
     }
 }
@@ -50,7 +112,12 @@ async function avanzarPagina() {
 async function retrocederPagina() {
     if (pagina > 1) {
         pagina -= 1;
-        listaPersonajes = await getPersonajes(pagina);
+
+        listaPersonajes = await getPersonajesFiltrados(pagina, filtro);
+
+        // Actualizamos el total de páginas
+        maxPaginas = listaPersonajes.info.pages;
+
         montarLista(listaPersonajes.personajes);
     }
 }
@@ -61,10 +128,12 @@ buttonAdelante.addEventListener("click", avanzarPagina);
 const buttonAtras = document.getElementById("buttonAtras");
 buttonAtras.addEventListener("click", retrocederPagina);
 
-// Ejemplo: actualizar el estado de los botones
+// Actualizar el estado de los botones
 function actualizarBotones(paginaActual, totalPaginas) {
-    buttonAtras.disabled = paginaActual === 1;
-    buttonAdelante.disabled = paginaActual === totalPaginas;
+    buttonAtras.disabled = paginaActual <= 1;
+
+    buttonAdelante.disabled =
+        totalPaginas === 0 || paginaActual >= totalPaginas;
 }
 
 await mostrarPersonajes();

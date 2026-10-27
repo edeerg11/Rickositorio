@@ -3,6 +3,190 @@
     src: url("../fuentes/get_schwifty.ttf") format("truetype");
 }
 
+/* ==============================
+   FORMULARIO DE FILTROS
+   ============================== */
+
+.formulario-filtros {
+    max-width: 650px;
+    width: calc(100% - 32px);
+    margin: 30px auto;
+    padding: 25px;
+    box-sizing: border-box;
+
+    background-color: rgb(239, 239, 239);
+    border: 2px solid #0fb0c6;
+    border-radius: 16px;
+
+    box-shadow: 0 5px 15px rgba(8, 127, 140, 0.12);
+}
+
+/* Título del formulario */
+
+.titulo-filtros {
+    margin: 0 0 24px;
+    text-align: center;
+
+    font-family: "Get Schwifty", sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    color: #087f8c;
+}
+
+/* Contenedor de los campos */
+
+.campos-filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Cada campo */
+
+.campo-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Etiquetas */
+
+.campo-filtro label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #087f8c;
+}
+
+/* Campos de texto y desplegables */
+
+.campo-filtro input,
+.campo-filtro select {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+
+    font-family: inherit;
+    font-size: 16px;
+    color: #263238;
+
+    background-color: white;
+    border: 1px solid #9ccfd5;
+    border-radius: 8px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Texto de ejemplo */
+
+.campo-filtro input::placeholder {
+    color: #84969a;
+}
+
+/* Efecto al seleccionar un campo */
+
+.campo-filtro input:focus,
+.campo-filtro select:focus {
+    outline: none;
+    border-color: #087f8c;
+    box-shadow: 0 0 0 3px rgba(15, 176, 198, 0.2);
+}
+
+/* Contenedor de botones */
+
+.botones-filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+/* Estilo común para los botones */
+
+.botones-filtros button {
+    min-height: 46px;
+    padding: 12px 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Botón Search */
+
+.boton-buscar {
+    background: linear-gradient(135deg, #2196f3, #1565c0);
+    color: white;
+
+    box-shadow: 0 4px 10px rgba(21, 101, 192, 0.25);
+}
+
+.boton-buscar:hover {
+    background: linear-gradient(135deg, #42a5f5, #1976d2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(21, 101, 192, 0.35);
+}
+
+/* Botón Clear filters */
+
+.boton-limpiar {
+    background-color: white;
+    color: #087f8c;
+    border: 1px solid #087f8c !important;
+}
+
+.boton-limpiar:hover {
+    background-color: #e0f7fa;
+    transform: translateY(-2px);
+}
+
+/* Efecto al pulsar */
+
+.botones-filtros button:active {
+    transform: translateY(0);
+}
+
+/* Accesibilidad: foco de teclado */
+
+.botones-filtros button:focus-visible {
+    outline: 3px solid #90caf9;
+    outline-offset: 3px;
+}
+
+/* Escritorio y pantallas grandes */
+
+@media (min-width: 600px) {
+    .campos-filtros {
+        flex-direction: row;
+    }
+
+    .campo-filtro {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .botones-filtros {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .botones-filtros button {
+        min-width: 150px;
+    }
+}
+
 /* Contenedor de todas las tarjetas */
 .listaTarjetas {
     display: flex;
@@ -16,7 +200,7 @@
     background-color: rgb(239, 239, 239);
 
     width: 400px;
-    height: 400px;
+    /* height: 400px; */
     flex-shrink: 0;
 
     border-radius: 15px;
@@ -64,8 +248,16 @@
 
 /* Lista */
 .tarjeta .info ul {
+    list-style: none;
     margin: 0;
-    padding-left: 20px;
+    padding-left: 0;
+}
+
+.tarjeta .info li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
 /* Favoritos */
