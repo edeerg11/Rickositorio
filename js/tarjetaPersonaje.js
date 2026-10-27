@@ -44,17 +44,9 @@ export function crearTarjetaPersonaje(pj, esFavoritos = false) {
     const ul = document.createElement("ul");
     divInfo.appendChild(ul);
 
-    const liEstado = document.createElement("li");
-    liEstado.textContent = pj.status;
-    ul.appendChild(liEstado);
-
-    const liEspecie = document.createElement("li");
-    liEspecie.textContent = pj.species;
-    ul.appendChild(liEspecie);
-
-    const liOrigen = document.createElement("li");
-    liOrigen.textContent = pj.origin.name;
-    ul.appendChild(liOrigen);
+    ul.appendChild(crearLista(pj.status, "../img/Pulse.png"));
+    ul.appendChild(crearLista(pj.species, "../img/Alien.png"));
+    ul.appendChild(crearLista(pj.origin.name, "../img/Planet.png"));
 
     // Recuperar los favoritos guardados
     let favoritos = JSON.parse(
@@ -72,7 +64,7 @@ export function crearTarjetaPersonaje(pj, esFavoritos = false) {
         imgFavoritos.src = "../img/Corazon_lleno.png";
         imgFavoritos.alt = "Quitar de favoritos";
     } else {
-        imgFavoritos.src = "../img/Corazon_vacio.png";
+        imgFavoritos.src = "../img/Heart.png";
         imgFavoritos.alt = "Añadir a favoritos";
     }
 
@@ -94,7 +86,7 @@ export function crearTarjetaPersonaje(pj, esFavoritos = false) {
                 personaje => personaje.id !== pj.id
             );
 
-            imgFavoritos.src = "../img/Corazon_vacio.png";
+            imgFavoritos.src = "../img/Heart.png";
             imgFavoritos.alt = "Añadir a favoritos";
 
             // Si estamos en Favoritos, retirar la tarjeta
@@ -130,7 +122,7 @@ export function crearTarjetaPersonaje(pj, esFavoritos = false) {
     });
 
     const iconVerMas = document.createElement("img");
-    iconVerMas.src = "../img/Question-1.svg";
+    iconVerMas.src = "../img/Info.png";
     iconVerMas.classList.add("iconVerMas");
     iconVerMas.alt = "";
 
@@ -141,4 +133,26 @@ export function crearTarjetaPersonaje(pj, esFavoritos = false) {
 
     // Devolver la tarjeta completa
     return divTarjeta;
+}
+
+function crearLista(texto, rutaIcono) {
+    // Crear el elemento de la lista
+    const li = document.createElement("li");
+
+    // Crear el icono
+    const icono = document.createElement("img");
+    icono.src = rutaIcono;
+    icono.alt = "";
+    icono.classList.add("iconoLista");
+
+    // Crear el texto
+    const span = document.createElement("span");
+    span.textContent = texto;
+
+    // Añadir el icono y el texto al li
+    li.appendChild(icono);
+    li.appendChild(span);
+
+    // Devolver el elemento completo
+    return li;
 }

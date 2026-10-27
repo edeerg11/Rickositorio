@@ -144,7 +144,7 @@ footer {
     }
 
     .portada img {
-        width: 45%;
+        width: 15%;
         max-width: 430px;
         /* Limitamos la ilustración para que no crezca demasiado en monitores grandes. */
     }

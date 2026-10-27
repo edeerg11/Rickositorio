@@ -1,4 +1,6 @@
-*{
+*,
+*::after,
+*::before{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -10,6 +12,11 @@ div{
     /* border: 1px solid black; */
     margin: 1rem;
 }
+div p{
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
 /* Código definitivo */
 h2{
     margin: 1rem;
@@ -18,9 +25,38 @@ h3{
     margin: 1rem;
 }
 ul{
-    margin-left: 1.5rem;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
 }
 li{
-    margin: 0.25rem 1rem;
-    padding: 0 0.5rem;
+    margin: 0 0.5rem 0.25rem 0;
+    width: 10rem;
+
+}
+ul li a{
+    text-decoration: none;
+}
+ul li a figure img{
+    border: 1px solid black;
+    width: 100%;
+    aspect-ratio: auto;
+}
+ul li a figure figcaption{
+    text-align: center;
+    
+}
+
+#release-date{
+    font-size: 1.25rem;
+}
+
+/* Usamos una ilustración pequeña en la portada del episodio. */
+@media (min-width: 768px) {
+    .portada img {
+        width: 15%;
+        max-width: 700px;
+    }
 }
