@@ -5,6 +5,11 @@
     margin: 0;
     padding: 0;
 }
+@font-face {
+    font-family: "Get Schwifty";
+    src: url("../fuentes/get_schwifty.ttf") format("truetype");
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -20,17 +25,30 @@ div p{
 /* Código definitivo */
 #d-episode-and-fav{
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    text-align:center;
+    align-items: center;
     margin: 0;
+    padding-right: 1rem;
 }
 
-h2{
+h1,h2{
     margin: 1rem;
 }
-h3{
-    margin: 1rem;
+#ep-title{
+    font-size: 3rem;
+    font-family: "Get Schwifty";
+    color: rgb(17, 176, 200);
 }
+#ep-numbers{
+    font-size: 2rem;
+}
+#img-fav{
+    width:5rem;
+    height:5rem;
+}
+
 ul{
     list-style: none;
     display: flex;
@@ -65,5 +83,9 @@ ul li a figure figcaption{
     .portada img {
         width: 15%;
         max-width: 700px;
+    }
+    #d-episode-and-fav{
+        flex-direction: row;
+        justify-content: space-between;
     }
 }

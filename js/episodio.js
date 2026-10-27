@@ -14,8 +14,8 @@ async function buildReportEpisode() {
     else {
         imgFav.src = "../img/Heart.png";
     }
-    document.getElementById("h2-episode").innerText = `T${episodio.temporada}E${episodio.episodio}`;
-    document.getElementById("h3-title").innerText = episodio.name;
+    document.getElementById("ep-numbers").innerText = `T${episodio.temporada}E${episodio.episodio}`;
+    document.getElementById("ep-title").innerText = episodio.name;
     document.getElementById("release-date").innerHTML += episodio.estreno;
     imgFav.addEventListener("click", function () {
         if (epFav.find((e) => e.id === episodio.id) !== undefined) {
