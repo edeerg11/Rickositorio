@@ -1,23 +1,91 @@
-*{
+*,
+*::after,
+*::before{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+@font-face {
+    font-family: "Get Schwifty";
+    src: url("../fuentes/get_schwifty.ttf") format("truetype");
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
 }
 div{
     /* border: 1px solid black; */
     margin: 1rem;
 }
+div p{
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
 /* Código definitivo */
-h2{
+#d-episode-and-fav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align:center;
+    align-items: center;
+    margin: 0;
+    padding-right: 1rem;
+}
+
+h1,h2{
     margin: 1rem;
 }
-h3{
-    margin: 1rem;
+#ep-title{
+    font-size: 3rem;
+    font-family: "Get Schwifty";
+    color: rgb(17, 176, 200);
 }
+#ep-numbers{
+    font-size: 2rem;
+}
+#img-fav{
+    width:5rem;
+    height:5rem;
+}
+
 ul{
-    margin-left: 1.5rem;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
 }
 li{
-    margin: 0.25rem 1rem;
-    padding: 0 0.5rem;
+    margin: 0 0.5rem 0.25rem 0;
+    width: 10rem;
+
+}
+ul li a{
+    text-decoration: none;
+}
+ul li a figure img{
+    border: 1px solid black;
+    width: 100%;
+    aspect-ratio: auto;
+}
+ul li a figure figcaption{
+    text-align: center;
+    
+}
+
+#release-date{
+    font-size: 1.25rem;
+}
+
+/* Usamos una ilustración pequeña en la portada del episodio. */
+@media (min-width: 768px) {
+    .portada img {
+        width: 15%;
+        max-width: 700px;
+    }
+    #d-episode-and-fav{
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

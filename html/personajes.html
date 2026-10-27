@@ -1,34 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rickstado de personajes</title>
+    <link rel="icon" type="image/png" href="../img/FaviconA.png">
     <script type="module" src="../js/personajes.js"></script>
+    <script type="module" src="../js/equipo.js"></script>
+    <script type="module" src="../js/menu.js"></script>
     <link rel="stylesheet" href="../css/personajes.css">
 </head>
 
 <body>
     <header>
-        <img src="../img/Group 121.png" alt="Rick and Morty">
-        <nav>
+        <a href="index.html"><img src="../img/Group 121.png" alt="Rick and Morty"></a>
+        <button type="button" class="menu-toggle" aria-controls="menu-principal" aria-expanded="false"
+            aria-label="Menú principal">
+            <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="menu-principal">
             <ul>
                 <li>
                     <a href="personajes.html">Personajes</a>
                 </li>
                 <li>
-                    <a href="#">Localizaciones</a>
+                    <a href="lugares.html">Localizaciones</a>
                 </li>
                 <li>
-                    <a href="#">Favoritos</a>
+                    <a href="episodios.html">Episodios</a>
                 </li>
                 <li>
-                    <a href="#">Episodios</a>
+                    <a href="favoritos.html">Favoritos</a>
                 </li>
             </ul>
         </nav>
     </header>
+
+    <main>
+        <div class="portada">
+            <div class="bienvenida">
+                <h1>Conoce a los personajes</h1>
+                <div>
+                    <button type="button" disabled>Oscuro</button>
+                    <button type="button" disabled>Claro</button>
+                </div>
+            </div>
+            <img src="../img/HighLightImage.png" alt="Rick sujetando los párpados de Morty">
+        </div>
+    </main>
+
+    <form id="formularioFiltros" class="formulario-filtros">
+
+        <h2 class="titulo-filtros">Buscar personajes</h2>
+
+        <div class="campos-filtros">
+            <div class="campo-filtro">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre del personaje...">
+            </div>
+
+            <div class="campo-filtro">
+                <label for="estado">Estado</label>
+                <select name="estado" id="estado">
+                    <option value="">Seleccione estado</option>
+                    <option value="alive">Vivo</option>
+                    <option value="dead">Muerto</option>
+                    <option value="unknown">Desconocido</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="botones-filtros">
+            <button type="submit" class="boton-buscar">
+                Buscar
+            </button>
+
+            <button type="reset" id="boton-limpiar" class="boton-limpiar">
+                Limpiar filtros
+            </button>
+        </div>
+
+    </form>
 
     <div class="listadoPJ">
         <ul id="listaPersonajes">
@@ -59,22 +112,45 @@
         </div> -->
     </div>
 
-    <button id="buttonAtras">Atras</button>
-    <button id="buttonAdelante">Adelante</button>
+    <div class="paginacion">
+        <button id="buttonAtras" class="buttonPage">
+            <span class="flecha">&larr;</span>
+            Atrás
+        </button>
+
+        <span id="numPagina"></span>
+
+        <button id="buttonAdelante" class="buttonPage">
+            Adelante
+            <span class="flecha">&rarr;</span>
+        </button>
+    </div>
 
     <footer>
-        <p>Ricksplorador — Proyecto de equipo</p>
-        <p class="equipo">Eder, Eneko, Guillermo, Markel y Ruth.</p>
-        <p><a href="https://github.com/edeerg11/Rickositorio">Ver Rickositorio en GitHub</a></p>
-        <p>Marcas que han colaborado con Rick y Morty</p>
-        <div class="marcas">
-            <a href="https://us.puma.com/us/en/collaborations/partnerships/rick-and-morty"><img src="../img/PUMA.webp"
-                    alt="Ver colección de PUMA y Rick y Morty"></a>
-            <a
-                href="https://www.irwendys.com/news/news-details/2021/Wendys-Expands-Partnership-With-Adult-Swim-On-Hit-Series-Rick-And-Morty/default.aspx"><img
-                    src="../img/Wendys.png" alt="Ver colaboración de Wendy’s con Rick y Morty"></a>
+        <!-- Damos a los nombres una franja propia sobre las dos columnas. -->
+        <div class="equipo-franja">
+            <p class="equipo">· Eder · Eneko · Guillermo ·Markel · Ruth ·</p>
         </div>
-        <p>© 2026 Equipo Ricksplorador</p>
+        <div class="footer-contenido">
+            <div class="footer-proyecto">
+                <h2>Ricksplorador</h2>
+                <p>Proyecto de equipo</p>
+                <p><a href="https://github.com/edeerg11/Rickositorio">Ver Rickositorio en GitHub</a></p>
+            </div>
+
+            <div class="footer-colaboraciones">
+                <h2>Marcas que han colaborado con Rick y Morty</h2>
+                <div class="marcas">
+                    <a href="https://us.puma.com/us/en/collaborations/partnerships/rick-and-morty"><img
+                            src="../img/PUMA.webp" alt="Ver colección de PUMA y Rick y Morty"></a>
+                    <a
+                        href="https://www.irwendys.com/news/news-details/2021/Wendys-Expands-Partnership-With-Adult-Swim-On-Hit-Series-Rick-And-Morty/default.aspx"><img
+                            src="../img/Wendys.png" alt="Ver colaboración de Wendy’s con Rick y Morty"></a>
+
+                </div>
+            </div>
+        </div>
+        <p class="footer-copyright">© 2026 Equipo Ricksplorador</p>
     </footer>
 </body>
 

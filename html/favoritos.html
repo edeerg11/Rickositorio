@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ricksplorador</title>
+    <title>Ricksplorador | Favoritos |</title>
     <link rel="icon" type="image/png" href="../img/FaviconA.png">
     <!-- Uso el CSS de personajes para que las tarjetas tengan el mismo diseño. -->
     <link rel="stylesheet" href="../css/personajes.css">
@@ -24,13 +24,13 @@
                     <a href="personajes.html">Personajes</a>
                 </li>
                 <li>
-                    <a href="#">Localizaciones</a>
+                    <a href="lugares.html">Localizaciones</a>
+                </li>
+                <li>
+                    <a href="episodios.html">Episodios</a>
                 </li>
                 <li>
                     <a href="favoritos.html">Favoritos</a>
-                </li>
-                <li>
-                    <a href="#">Episodios</a>
                 </li>
             </ul>
         </nav>
@@ -49,20 +49,28 @@
         </div>
 
         <!-- Agrupamos los favoritos por categoría. -->
-        <section>
-            <h2>Personajes favoritos</h2>
+
+        <!-- Personaje Favoritos-->
+        <section class="seccion-favoritos">
+            <h2 id="titulo-personajes">Personajes favoritos</h2>
+            <p id="sin-personajes" class="mensaje-vacio" hidden>Aún no tienes favoritos.</p>
             <!-- Aquí mostraré con JavaScript los personajes guardados como favoritos. -->
             <div id="favoritos-personajes" class="listaTarjetas"></div>
         </section>
 
-        <section>
-            <h2>Episodios favoritos</h2>
-            <div id="favoritos-episodios"></div>
+        <!-- Episodios favoritos-->
+        <section class="seccion-favoritos">
+            <h2 id="titulo-episodios">Episodios favoritos</h2>
+            <p id="sin-episodios" class="mensaje-vacio" hidden>Aún no tienes episodios favoritos.</p>
+            <div id="favoritos-episodios" class="listaTarjetas"></div>
         </section>
 
-        <section>
-            <h2>Localizaciones favoritas</h2>
-            <div id="favoritos-lugares"></div>
+        <!-- Localizaciones Favoritas -->
+
+        <section class="seccion-favoritos">
+            <h2 id="titulo-lugares">Localizaciones favoritas</h2>
+            <p id="sin-lugares" class="mensaje-vacio" hidden>Aún no tienes localizaciones favoritas.</p>
+            <div id="favoritos-lugares" class="listaTarjetas"></div>
         </section>
 
     </main>
