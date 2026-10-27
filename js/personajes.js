@@ -81,6 +81,21 @@ formulario.addEventListener("submit", async function (event) {
     montarLista(personajesFiltrados.personajes);
 });
 
+const buttonLimpiar = document.getElementById("boton-limpiar");
+buttonLimpiar.addEventListener("click", async function () {
+    // Limpiar los filtros guardados
+    filtro = {
+        nombre: "",
+        estado: ""
+    };
+
+    // Volver a la primera página
+    pagina = 1;
+
+    // Mostrar la lista original de personajes
+    await mostrarPersonajes();
+});
+
 async function avanzarPagina() {
     if (pagina < maxPaginas) {
         pagina += 1;
