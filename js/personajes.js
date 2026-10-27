@@ -48,9 +48,9 @@ function montarLista(listaPersonajes) {
 
 const formulario = document.getElementById("formularioFiltros");
 let filtro = {
-    nombre,
-    estado
-}
+    nombre: "",
+    estado: ""
+};
 
 formulario.addEventListener("submit", async function (event) {
     event.preventDefault(); // Evita que la página se recargue
