@@ -1,5 +1,6 @@
 import { getEpisodios } from "./main.js";
 let listaEpisodios;
+let listaFavoritos;
 let pagina = 1;
 
 const buttonAdelante = document.getElementById("b_adelante");
@@ -31,22 +32,28 @@ async function retrocederPag() {
     console.log(pagina);
 }
 
+function obtenerFavoritos() {
+    listaFavoritos = JSON.parse(localStorage.getItem("episodiosFavorito")) || [];
+}
+
 ////////////////////////////////////////////////
+// === Carga el grid de episodios ===
 function buildGridEpisodes() {
     let tarjetas = listaEpisodios.episodios;
     let gridEpisodes = document.getElementById("grid-episodes");
-    for (let i = 0; i<tarjetas.length; i++) {
+    for (let i = 0; i < tarjetas.length; i++) {
         gridEpisodes.append(buildCardEpisode(tarjetas[i]));
     }
 }
-
-function cleanGridEpisodes(){
+// === Vacía el Grid de episodios ===
+function cleanGridEpisodes() {
     let cardEpisodes = document.querySelectorAll(".card-episode");
     cardEpisodes.forEach(element => {
         element.remove();
     });
 }
 
+// === Genera la ficha de cada episodio ===
 function buildCardEpisode(data) {
     //Crea tarjeta.
     let card = document.createElement("div");
@@ -54,12 +61,14 @@ function buildCardEpisode(data) {
     //Crea e inserta datos de episodio
     let elem = document.createElement("div");
     elem.classList.add("data-episode");
-    elem.innerText= `${data.name} | T${data.temporada}E${data.episodio}`;
+    elem.innerText = `${data.name} | T${data.temporada}E${data.episodio}`;
     card.append(elem);
     //crea e inserta controles del episodio
     card.append(buildControlsEpisode(data));
     return card;
 }
+
+// === Genera los controles de la ficha de episodios ===
 function buildControlsEpisode(data) {
     //Crea contenedor
     let consEp = document.createElement("div");
@@ -71,48 +80,63 @@ function buildControlsEpisode(data) {
     let link = document.createElement("a");
     link.href = "./episodio.html";
     link.innerText = "Saber más";
-    link.addEventListener("click",function(e){
+    link.addEventListener("click", function (e) {
         e.preventDefault();
-        localStorage.setItem("idEpisodio",data.id);
-        open(this.href,"_self");
+        localStorage.setItem("idEpisodio", data.id);
+        open(this.href, "_self");
     });
     elem.append(link);
     //Inserta botón de saber más
     consEp.append(elem);
-    //crea e inserta botón de favoritos
+    //Crea e inserta botón de favoritos
     elem = document.createElement("div");
     elem.classList.add("button-fav");
     link = document.createElement("a");
     let img = document.createElement("img");
-    img.setAttribute("alt","Favorito");
-    img.src = "../img/Heart.svg";
+    img.setAttribute("alt", "Favorito");
+    //Configura si está activado según la lista de favoritos
+    if (listaFavoritos.find((e) => e.id === data.id) === undefined) {
+        img.src="../img/Heart.png";
+    } else {
+        img.src="../img/Corazon_lleno.png";
+    }
     link.append(img);
     elem.append(link);
-    link.addEventListener("click",function(e){
+    //Configura evento del enlace.
+    link.addEventListener("click", function (e) {
         e.preventDefault();
-        let listaFavoritos = JSON.parse(localStorage.getItem("episodiosFavorito"))|| [];
-        if(listaFavoritos.find((e)=>e.id===data.id)=== undefined){
+        listaFavoritos = JSON.parse(localStorage.getItem("episodiosFavorito")) || [];
+        if (listaFavoritos.find((e) => e.id === data.id) === undefined) {
             listaFavoritos.push(data);
+            img.src="../img/Corazon_lleno.png";
+        } else {
+            listaFavoritos.splice(data);
+            img.src="../img/Heart.png";
         }
-        localStorage.setItem("episodiosFavorito",JSON.stringify(listaFavoritos));
+        localStorage.setItem("episodiosFavorito", JSON.stringify(listaFavoritos));
     })
     consEp.append(elem);
     return consEp;
 }
 
+// Actualiza los botones de paginación ===
 function updateButtons() {
-     if(pagina === 1){
+    if (pagina === 1) {
         document.getElementById("b_atras").disabled = true;
-    }else{
+    } else {
         document.getElementById("b_atras").disabled = false;
     }
-    if(pagina === listaEpisodios.info.pages){
+    if (pagina === listaEpisodios.info.pages) {
         document.getElementById("b_adelante").disabled = true;
-    } else{
+    } else {
         document.getElementById("b_adelante").disabled = false;
     }
 }
 
 //===== MAIN FUNCTIONS
+//Obtiene los episodios de la API
 await obtenerEpisodios();
+//Obtiene los favoritos del LocalStore
+obtenerFavoritos();
+//Construye la página
 buildGridEpisodes();
