@@ -18,6 +18,13 @@ div p{
     margin-bottom: 1rem;
 }
 /* Código definitivo */
+#d-episode-and-fav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0;
+}
+
 h2{
     margin: 1rem;
 }

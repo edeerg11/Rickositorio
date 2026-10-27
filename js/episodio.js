@@ -1,13 +1,33 @@
 import { getEpisodio, getElementByURL } from "./main.js";
 import { crearTarjetaPersonaje } from "./tarjetaPersonaje.js";
 let episodio;
+let epFav;
 const MAX_CHARS = 10;
 
 async function buildReportEpisode() {
     let chars = 0;
+    epFav = JSON.parse(localStorage.getItem("episodiosFavorito"));
+    let imgFav = document.getElementById("img-fav");
+    if (epFav.find((e) => e.id === episodio.id) !== undefined) {
+        imgFav.src = "../img/Corazon_lleno.png";
+    }
+    else {
+        imgFav.src = "../img/Heart.png";
+    }
     document.getElementById("h2-episode").innerText = `T${episodio.temporada}E${episodio.episodio}`;
     document.getElementById("h3-title").innerText = episodio.name;
     document.getElementById("release-date").innerHTML += episodio.estreno;
+    imgFav.addEventListener("click", function () {
+        if (epFav.find((e) => e.id === episodio.id) !== undefined) {
+            imgFav.src = "../img/Heart.png";
+            epFav.splice(episodio);
+        }
+        else {
+            imgFav.src = "../img/Corazon_lleno.png";
+            epFav.push(episodio);
+        }
+        localStorage.setItem("episodiosFavorito", JSON.stringify(epFav));
+    })
     let characterList = document.getElementById("character-list");
     for (let url of episodio.personajes) {
         let personaje = await getElementByURL(url, "personaje");
