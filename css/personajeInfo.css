@@ -4,7 +4,7 @@
 
 body {
     margin: 0;
-    padding: 2rem;
+    padding: 0;
     background: #f4f6f8;
     font-family: Arial, Helvetica, sans-serif;
     color: #263238;
@@ -14,11 +14,9 @@ body {
 
 #container {
     display: flex;
-
+    margin: 0 2rem 2rem 2rem;
     flex-direction: column;
     gap: 2.5rem;
-    width: 100%;
-    margin: 0;
     padding: 2rem;
     background: #fff;
     border: 1px solid #e5e7eb;
@@ -47,11 +45,12 @@ body {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
-.titulo-container{
+.titulo-container {
     display: flex;
     gap: 1rem;
 }
-.boton-favorito{
+
+.boton-favorito {
     background-color: transparent;
     outline: none;
     cursor: pointer;
@@ -113,7 +112,8 @@ body {
     object-fit: contain;
     flex-shrink: 0;
 }
-.character-localizacion{
+
+.character-localizacion {
     display: flex;
 }
 
