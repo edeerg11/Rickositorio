@@ -33,9 +33,9 @@ async function mostrarResidentes(lugar) {
         contenedorResidentes.textContent = "Nadie vive aquí.";
         return;
     }
-
+    const residentesMax = lugar.residents.slice(0,10);
     const personajes = await Promise.all(
-        lugar.residents.map(url => getElementByURL(url))
+        residentesMax.map(url => getElementByURL(url))
     );
 
     personajes.forEach(function (personaje) {
