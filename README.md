@@ -11,16 +11,11 @@ Ricksplorador es una aplicación web estática para explorar personajes, localiz
 
 ## Cómo ejecutarlo
 
-No se necesita instalar dependencias ni compilar el proyecto. Como la aplicación utiliza módulos JavaScript, ejecútala desde un servidor HTTP local:
+No se necesita instalar dependencias ni compilar el proyecto. Para servir la aplicación se utiliza la extensión [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) de Visual Studio Code:
 
-1. Abre una terminal en la carpeta raíz del proyecto.
-2. Inicia un servidor estático con Python:
-
-	```bash
-	python3 -m http.server 8000
-	```
-
-3. Abre [http://localhost:8000/html/index.html](http://localhost:8000/html/index.html) en un navegador moderno.
+1. Abre la carpeta del proyecto en Visual Studio Code.
+2. Abre `html/index.html` en el editor.
+3. Pulsa **Go Live** en la barra de estado de Visual Studio Code. Live Server abrirá la aplicación en el navegador.
 
 Los listados obtienen sus datos de la [Rick and Morty API](https://rickandmortyapi.com/), por lo que necesitan conexión a Internet. Los favoritos se guardan en el almacenamiento local del navegador.
 
