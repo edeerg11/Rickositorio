@@ -3,7 +3,9 @@
 let favoritosEpisodios = JSON.parse(
     localStorage.getItem("episodiosFavorito")
 ) || [];
-export function crearTarjetaEpisodioFav(episodio) {
+
+
+export function crearTarjetaEpisodioFav(episodio, esListaFavoritos = false) {
 
     // Tarjeta principal
     const tarjeta = document.createElement("div");
@@ -47,24 +49,58 @@ export function crearTarjetaEpisodioFav(episodio) {
     const botonFavorito = document.createElement("button");
     botonFavorito.classList.add("button-fav");
     botonFavorito.type = "button";
-
     const corazon = document.createElement("img");
-    corazon.src = "../img/Corazon_lleno.png";
-    corazon.alt = "Quitar de favoritos";
+
+    function actualizarCorazon() {
+        const encontrado = favoritosEpisodios.some(
+            episodioLista => episodioLista.id === episodio.id
+        );
+
+        corazon.src = encontrado
+            ? "../img/Corazon_lleno.png"
+            : "../img/Heart.png";
+
+        corazon.alt = encontrado
+            ? "Quitar de favoritos"
+            : "Añadir a favoritos";
+    }
+
+    // Mostrar el corazón correcto al crear la tarjeta
+    actualizarCorazon();
 
     botonFavorito.appendChild(corazon);
 
-    // Quitar el episodio de favoritos
+    // Añadir o quitar el episodio de favoritos
     botonFavorito.addEventListener("click", function () {
-        // Quitar de favoritos
-        favoritosEpisodios = favoritosEpisodios.filter(
-            episodioFav => episodioFav.id !== episodio.id
+
+        const encontrado = favoritosEpisodios.some(
+            episodioLista => episodioLista.id === episodio.id
         );
+
+        if (encontrado) {
+            // Quitar de favoritos
+            favoritosEpisodios = favoritosEpisodios.filter(
+                episodioFav => episodioFav.id !== episodio.id
+            );
+            if (esListaFavoritos) {
+                tarjeta.remove();
+            }
+
+        } else {
+            // Añadir solo si no existe
+            favoritosEpisodios.push(episodio);
+        }
+
+        // Actualizar el corazón
+        actualizarCorazon();
+
+        // Guardar los cambios en localStorage
         localStorage.setItem(
             "episodiosFavorito",
             JSON.stringify(favoritosEpisodios)
         );
-        tarjeta.remove();
+
+        console.log(favoritosEpisodios);
     });
 
     // Uno los elementos
