@@ -129,7 +129,6 @@ export async function getLugares(numberPage = 1) {
  */
 export async function getPersonaje(id) {
     const API_URL = `https://rickandmortyapi.com/api/character/${id}`;
-    console.log(API_URL);
 
     const response = await fetch(API_URL);
     if (!response.ok) {
@@ -149,7 +148,6 @@ export async function getPersonaje(id) {
  */
 export async function getLugar(id) {
     const API_URL = `https://rickandmortyapi.com/api/location/${id}`;
-    console.log(API_URL);
 
     const response = await fetch(API_URL);
     if (!response.ok) {
@@ -168,7 +166,6 @@ export async function getLugar(id) {
  */
 export async function getEpisodio(id) {
     const API_URL = `https://rickandmortyapi.com/api/episode/${id}`;
-    console.log(API_URL);
 
     const response = await fetch(API_URL);
     if (!response.ok) {
@@ -180,7 +177,6 @@ export async function getEpisodio(id) {
 }
 export async function getElementByURL(url, type = "personaje" || "lugar" || "episodio") {
     const API_URL = url;
-    console.log(API_URL);
 
     const response = await fetch(API_URL);
     if (!response.ok) {
