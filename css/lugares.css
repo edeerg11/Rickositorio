@@ -10,6 +10,10 @@
     height: auto;
     margin-bottom: 8px;
 }
+
+h2 {
+    margin: 2rem;
+}
 /* Estilos por defecto*/
 
 @font-face {
