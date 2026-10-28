@@ -224,56 +224,91 @@ footer {
     display: none;
 }
 
-/* Tarjetas de episodios favoritos */
+/* TARJETAS DE EPISODIOS FAVORITOS */
 
+/* Distribuyo las tarjetas como en la página de Episodios. */
+#favoritos-episodios {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+/* Mantengo las medidas originales de las tarjetas. */
 #favoritos-episodios .card-episode {
-    background-color: #f1f1f1;
-    border-radius: 20px;
-    padding: 25px;
-    width: 320px;
-    max-width: 100%;
-    min-height: 190px;
-
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 35px;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: rgb(241, 241, 241);
+    width: 15rem;
+    min-height: 0;
+    margin: 0.2rem;
+    padding: 0.5rem;
+    gap: 0;
 }
 
+/* Información del episodio. */
 #favoritos-episodios .data-episode {
     display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    font-size: 18px;
+    flex-direction: row;
+    align-items: center;
+    margin: 0.2rem;
+    padding: 0.5rem;
+    gap: 0;
+    font-size: inherit;
 }
 
-#favoritos-episodios .data-episode span:first-child {
-    font-size: 30px;
+/* El mismo icono que utiliza mi compañero. */
+#favoritos-episodios .data-episode::before {
+    content: "🎞";
+    font-size: 2rem;
+    margin-right: 1rem;
 }
 
+/* Contenedor de los botones. */
 #favoritos-episodios .controls-episode {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 0.2rem;
+    padding: 0.2rem;
+}
+
+/* Botón Saber más. */
+#favoritos-episodios .button-more {
+    margin: 0.1rem;
+    padding: 0.5rem;
+    background-color: rgb(17, 176, 200);
+    border-radius: 1.25rem;
 }
 
 #favoritos-episodios .button-more a {
-    display: inline-block;
-    background-color: #11b0c8;
+    display: inline;
+    background: transparent;
     color: white;
-    padding: 10px 14px;
-    border-radius: 25px;
+    padding: 0;
+    border-radius: 0;
     text-decoration: none;
-    font-size: 18px;
+    font-size: inherit;
 }
 
+/* Corazón de favoritos. */
 #favoritos-episodios .button-fav {
+    margin: 0.1rem;
+    padding: 0.1rem;
     background: transparent;
     border: none;
     cursor: pointer;
 }
 
 #favoritos-episodios .button-fav img {
-    width: 55px;
-    height: 55px;
+    width: 36px;
+    height: auto;
+    display: block;
 }
