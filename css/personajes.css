@@ -3,6 +3,16 @@
     src: url("../fuentes/get_schwifty.ttf") format("truetype");
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 *,
 *::before,
 *::after {
