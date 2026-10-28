@@ -229,12 +229,14 @@ footer {
 /* Distribuyo las tarjetas como en la página de Episodios. */
 #favoritos-episodios {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 0;
-    margin: 0.5rem;
-    padding: 0.5rem;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
 /* Mantengo las medidas originales de las tarjetas. */
