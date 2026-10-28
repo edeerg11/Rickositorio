@@ -63,7 +63,7 @@ lugaresFavoritos.forEach(function (lugar) {
 //Crear tarjetas para los episodios favoritos.
 episodiosFavoritos.forEach(function (episodio) {
 
-    const tarjeta = crearTarjetaEpisodioFav(episodio);
+    const tarjeta = crearTarjetaEpisodioFav(episodio, true);
 
     contenedorEpisodios.appendChild(tarjeta);
 
