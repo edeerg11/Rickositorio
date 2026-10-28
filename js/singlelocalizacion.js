@@ -1,7 +1,9 @@
-import { getLugar } from "./main.js";
+import { getLugar, getElementByURL } from "./main.js";
+import { crearTarjetaPersonaje } from "./tarjetaPersonaje.js";
 
 const id = new URLSearchParams(location.search).get("id");
 const contenedor = document.getElementById("detalle-lugar");
+const contenedorResidentes = document.getElementById("residentes");
 
 async function mostrarDetalle() {
     const lugar = await getLugar(id);
@@ -24,5 +26,20 @@ async function mostrarDetalle() {
         <a class="detalle-volver" href="lugares.html">← Volver a localizaciones</a>
     </div>
 `;
+    await mostrarResidentes(lugar);
+}
+async function mostrarResidentes(lugar) {
+    if (lugar.residents.length === 0) {
+        contenedorResidentes.textContent = "Nadie vive aquí.";
+        return;
+    }
+
+    const personajes = await Promise.all(
+        lugar.residents.map(url => getElementByURL(url))
+    );
+
+    personajes.forEach(function (personaje) {
+        contenedorResidentes.appendChild(crearTarjetaPersonaje(personaje));
+    });
 }
 mostrarDetalle();

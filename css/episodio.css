@@ -1,80 +1,92 @@
 *,
 *::after,
-*::before{
+*::before {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 @font-face {
     font-family: "Get Schwifty";
     src: url("../fuentes/get_schwifty.ttf") format("truetype");
 }
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
 }
-div{
+
+div {
     /* border: 1px solid black; */
     margin: 1rem;
 }
-div p{
+
+div p {
     font-weight: bold;
     font-size: 1.25rem;
     margin-bottom: 1rem;
 }
+
 /* Código definitivo */
-#d-episode-and-fav{
+#d-episode-and-fav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align:center;
+    text-align: center;
     align-items: center;
     margin: 0;
     padding-right: 1rem;
 }
 
-h1,h2{
+h1,
+h2 {
     margin: 1rem;
 }
-#ep-title{
+
+#ep-title {
     font-size: 3rem;
     font-family: "Get Schwifty";
     color: rgb(17, 176, 200);
 }
-#ep-numbers{
+
+#ep-numbers {
     font-size: 2rem;
 }
-#img-fav{
-    width:5rem;
-    height:5rem;
+
+#img-fav {
+    width: 2rem;
+    height: 2rem;
 }
 
-ul{
+ul {
     list-style: none;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:flex-start;
+    justify-content: flex-start;
 }
-li{
+
+li {
     margin: 0 0.5rem 0.25rem 0;
     width: 10rem;
 
 }
-ul li a{
+
+ul li a {
     text-decoration: none;
 }
-ul li a figure img{
+
+ul li a figure img {
     border: 1px solid black;
     width: 100%;
     aspect-ratio: auto;
 }
-ul li a figure figcaption{
+
+ul li a figure figcaption {
     text-align: center;
-    
+
 }
 
-#release-date{
+#release-date {
     font-size: 1.25rem;
 }
 
@@ -84,8 +96,11 @@ ul li a figure figcaption{
         width: 15%;
         max-width: 700px;
     }
-    #d-episode-and-fav{
+
+    #d-episode-name-and-fav {
+        display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
     }
 }
