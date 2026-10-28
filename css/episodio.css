@@ -57,7 +57,34 @@ h2 {
     height: 2rem;
 }
 
-ul {
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+}
+
+nav li {
+    margin: 0;
+    width: auto;
+}
+
+nav a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: #087f8c;
+    border: 1px solid #087f8c;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+/* Listas de episodios y personajes */
+ul:not(nav ul) {
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -65,10 +92,9 @@ ul {
     justify-content: flex-start;
 }
 
-li {
+ul:not(nav ul) li {
     margin: 0 0.5rem 0.25rem 0;
     width: 10rem;
-
 }
 
 ul li a {

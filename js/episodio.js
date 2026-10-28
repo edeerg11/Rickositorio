@@ -6,7 +6,7 @@ const MAX_CHARS = 10;
 
 async function buildReportEpisode() {
     let chars = 0;
-    epFav = JSON.parse(localStorage.getItem("episodiosFavorito"));
+    epFav = JSON.parse(localStorage.getItem("episodiosFavorito")) || [];
     let imgFav = document.getElementById("img-fav");
     if (epFav.find((e) => e.id === episodio.id) !== undefined) {
         imgFav.src = "../img/Corazon_lleno.png";

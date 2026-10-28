@@ -1,7 +1,14 @@
 import { getPersonaje, getElementByURL } from "./main.js";
 import { crearTarjetaEpisodioFav } from "./tarjetaEpisodio.js";
+import { crearTarjetaLugar } from "./tarjetaLugar.js";
+
 
 const idPersonaje = localStorage.getItem("IdPersonaje");
+let favoritos = JSON.parse(localStorage.getItem("PersonajesFavorito")) || [];
+console.log("favs", favoritos, idPersonaje);
+
+
+
 let personaje;
 
 async function obtenerInfoPersonaje() {
@@ -36,6 +43,39 @@ async function muestraDatos() {
 
     const titulo = document.createElement("h1");
     titulo.textContent = personaje.name;
+
+    const botonFavorito = document.createElement("button");
+    botonFavorito.className = "boton-favorito";
+    botonFavorito.type = "button";
+
+    const corazon = document.createElement("img");
+    corazon.src = favoritos.some(personaje => personaje.id === Number(idPersonaje)) ? "../img/Corazon_lleno.png" : "../img/Heart.png";
+    corazon.alt = "Añadir a favoritos";
+    corazon.className = "corazon";
+
+    botonFavorito.append(corazon);
+
+    botonFavorito.addEventListener("click", function () {
+        const inFavourites = favoritos.some(personaje => personaje.id === Number(idPersonaje));
+        console.log(inFavourites);
+
+
+        if (inFavourites) {
+            favoritos = favoritos.filter(fav => fav.id !== Number(idPersonaje));
+            corazon.src = "../img/Heart.png";
+            corazon.alt = "quitar de favoritos";
+        } else {
+            favoritos.push(personaje);
+            corazon.src = "../img/Corazon_lleno.png";
+            corazon.alt = "Añadir a favoritos";
+        }
+        localStorage.setItem("PersonajesFavorito", JSON.stringify(favoritos))
+
+    });
+
+    const tituloContainer = document.createElement("div");
+    tituloContainer.className = "titulo-container";
+    tituloContainer.append(titulo, botonFavorito);
 
     const caps = document.createElement("p");
     caps.className = "character-caps";
@@ -80,7 +120,7 @@ async function muestraDatos() {
     genero.className = "character-status";
 
     const iconoGenero = document.createElement("img");
-    iconoGenero.src = (personaje.gender == "Male")?"../img/GenderMale.svg": "../img/GenderFemale.svg" ;
+    iconoGenero.src = (personaje.gender == "Male") ? "../img/GenderMale.svg" : "../img/GenderFemale.svg";
     iconoGenero.alt = "";
     iconoGenero.className = "status-icon";
 
@@ -91,9 +131,40 @@ async function muestraDatos() {
     // Añadir los datos
     datos.append(estado, especie, genero);
 
-    // Añadir información a la sección
-    info.append(titulo, caps, datos);
 
+    // Localización
+    const localizacion = document.createElement("div");
+    localizacion.className = "character-localizacion";
+
+    const iconoLocalizacion = document.createElement("img");
+    iconoLocalizacion.src = "../img/Alien.png";
+    iconoLocalizacion.alt = "";
+    iconoLocalizacion.className = "status-icon";
+
+    const textoLocalizacion = document.createElement("span");
+    textoLocalizacion.textContent = personaje.location.name;
+    let tarjeta = null;
+    if (personaje.location.url) {
+        const localizacionInfo = await getElementByURL(personaje.location.url, "lugar");
+        tarjeta = crearTarjetaLugar(localizacionInfo);
+    }
+    let tarjetaOrigin = null;
+    if (personaje.origin.url) {
+        const originInfo = await getElementByURL(personaje.origin.url, "lugar");
+        tarjetaOrigin = crearTarjetaLugar(originInfo);
+    }
+
+    if (tarjeta) {
+        localizacion.append(tarjeta);
+        if (tarjetaOrigin) {
+            localizacion.append(tarjetaOrigin);
+
+        }
+    }
+
+
+    // Añadir información a la sección
+    info.append(tituloContainer, caps, datos, localizacion);
     // Imagen e información arriba
     parteSuperior.append(imagen, info);
 
@@ -126,6 +197,11 @@ async function muestraDatos() {
         if (tarjeta) {
             episodiosContainer.append(tarjeta);
         }
+    }
+    if (personaje.episode.length > 11) {
+        const masEpisodios = document.createElement("span");
+        masEpisodios.textContent = `...${personaje.episode.length - 11} episodios más`;
+        episodiosContainer.append(masEpisodios);
     }
 
     // =========================
