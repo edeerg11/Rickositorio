@@ -19,6 +19,25 @@ No se necesita instalar dependencias ni compilar el proyecto. Para servir la apl
 
 Los listados obtienen sus datos de la [Rick and Morty API](https://rickandmortyapi.com/), por lo que necesitan conexión a Internet. Los favoritos se guardan en el almacenamiento local del navegador.
 
+## Guía rápida de uso de la aplicación.
+  
+La landing page dispone de botones de acceso a las siguientes páginas secundarias:
+
+- Personajes.
+- Localizaciones.
+- Episodios.
+- Favoritos.
+
+En los dispositivos móviles los botones estarán ocultos y se accederán clicando el botón de la hamburguesa.
+  
+La página de personajes incluye un interfaz de búsqueda de personajes.
+
+La de localizaciones está ordenada por temporada y episodio.
+
+La de favoritos está ordenada por personajes, episodios, localizaciones.
+
+Cada personaje, localización y episodio tendrá su enlace a su propia página individual. Cada personaje incluye una lista de los episodios en que sale y cada episodio su lista de personajes que aparecen.
+
 ## Estructura
 
 ```text
