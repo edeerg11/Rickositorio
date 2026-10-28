@@ -1,5 +1,7 @@
 import { getPersonaje, getElementByURL } from "./main.js";
 import { crearTarjetaEpisodioFav } from "./tarjetaEpisodio.js";
+import { crearTarjetaLugar } from "./tarjetaLugar.js";
+
 
 const idPersonaje = localStorage.getItem("IdPersonaje");
 let personaje;
@@ -80,7 +82,7 @@ async function muestraDatos() {
     genero.className = "character-status";
 
     const iconoGenero = document.createElement("img");
-    iconoGenero.src = (personaje.gender == "Male")?"../img/GenderMale.svg": "../img/GenderFemale.svg" ;
+    iconoGenero.src = (personaje.gender == "Male") ? "../img/GenderMale.svg" : "../img/GenderFemale.svg";
     iconoGenero.alt = "";
     iconoGenero.className = "status-icon";
 
@@ -91,9 +93,30 @@ async function muestraDatos() {
     // Añadir los datos
     datos.append(estado, especie, genero);
 
-    // Añadir información a la sección
-    info.append(titulo, caps, datos);
 
+    // Localización
+    const localizacion = document.createElement("div");
+    localizacion.className = "character-localizacion";
+
+    const iconoLocalizacion = document.createElement("img");
+    iconoLocalizacion.src = "../img/Alien.png";
+    iconoLocalizacion.alt = "";
+    iconoLocalizacion.className = "status-icon";
+
+    const textoLocalizacion = document.createElement("span");
+    textoLocalizacion.textContent = personaje.location.name;
+    const localizacionInfo = await getElementByURL(personaje.location.url, "lugar");
+
+    console.log(localizacionInfo);
+    const tarjeta =  crearTarjetaLugar(localizacionInfo);
+    if (tarjeta) {
+        localizacion.append(tarjeta);
+    }
+   
+    
+
+    // Añadir información a la sección
+    info.append(titulo, caps, datos, localizacion);
     // Imagen e información arriba
     parteSuperior.append(imagen, info);
 
